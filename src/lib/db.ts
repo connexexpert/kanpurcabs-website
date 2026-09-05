@@ -1,8 +1,13 @@
 import { Pool } from "pg";
 
-const connectionString =
+let connectionString =
   process.env.DATABASE_URL ||
-  "postgresql://postgres.cshyncmssaileubzohfw:J*xpM5G*264y%2FuZ@aws-0-ap-south-1.pooler.supabase.com:6543/postgres?sslmode=require";
+  "postgresql://postgres.cshyncmssaileubzohfw:J*xpM5G*264y%2FuZ@aws-0-ap-south-1.pooler.supabase.com:6543/postgres";
+
+// Strip sslmode from connection string if present so it does not conflict with custom SSL object
+if (connectionString.includes("sslmode=")) {
+  connectionString = connectionString.replace(/([?&])sslmode=[^&]+(&|$)/, "$1").replace(/[?&]$/, "");
+}
 
 declare global {
   // eslint-disable-next-line no-var
