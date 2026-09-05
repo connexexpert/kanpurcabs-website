@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validations';
-import { supabaseServer } from '@/lib/supabase-server';
+import { query } from '@/lib/db';
 import { sendContactNotification } from '@/lib/email';
 
 export async function POST(req: Request) {
@@ -12,25 +12,18 @@ export async function POST(req: Request) {
     
     // Save to Supabase
     try {
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL !== "https://placeholder-project.supabase.co") {
-        const { error: dbError } = await supabaseServer
-          .from('contact_messages')
-          .insert([
-            {
-              name: validatedData.name,
-              email: validatedData.email,
-              phone: validatedData.phone || null,
-              subject: validatedData.subject || null,
-              message: validatedData.message,
-            }
-          ]);
-        
-        if (dbError) {
-          console.error('Supabase Contact Insert Error:', dbError);
-        } else {
-          console.log('✅ Contact message saved to Supabase');
-        }
-      }
+      await query(
+        `INSERT INTO public.contact_messages (name, email, phone, subject, message)
+         VALUES ($1, $2, $3, $4, $5)`,
+        [
+          validatedData.name,
+          validatedData.email,
+          validatedData.phone || null,
+          validatedData.subject || null,
+          validatedData.message,
+        ]
+      );
+      console.log('✅ Contact message saved to Supabase');
     } catch (dbError) {
       console.error('Database connection error (continuing anyway):', dbError);
     }

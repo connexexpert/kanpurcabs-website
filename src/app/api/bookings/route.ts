@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { bookingSchema } from '@/lib/validations';
-import { supabaseServer } from '@/lib/supabase-server';
+import { query } from '@/lib/db';
 import { sendBookingNotification } from '@/lib/email';
 import { generateBookingId } from '@/lib/utils';
 
@@ -13,44 +13,43 @@ export async function POST(req: Request) {
     
     const bookingId = generateBookingId();
     
-    const bookingPayload = {
-      booking_id: bookingId,
-      name: validatedData.name,
-      phone: validatedData.phone,
-      email: validatedData.email || null,
-      pickup_location: validatedData.pickupLocation || 'Kanpur',
-      drop_location: validatedData.dropLocation || null,
-      travel_date: new Date(validatedData.travelDate).toISOString(),
-      return_date: validatedData.returnDate ? new Date(validatedData.returnDate).toISOString() : null,
-      pickup_time: validatedData.travelTime || null,
-      trip_type: validatedData.tripType || 'one_way',
-      service_type: validatedData.serviceType,
-      vehicle_type: validatedData.vehicleType || null,
-      passengers: Number(validatedData.passengers) || 1,
-      requirements: validatedData.requirements || null,
-      package_duration: validatedData.packageDuration || null,
-      source_page: validatedData.sourcePage || 'website',
-      source_section: validatedData.sourceSection || 'direct',
-      status: 'new',
-    };
-    
-    // Save to Supabase
+    const travelDate = new Date(validatedData.travelDate).toISOString();
+    const returnDate = validatedData.returnDate ? new Date(validatedData.returnDate).toISOString() : null;
+    const passengers = Number(validatedData.passengers) || 1;
+
+    // Save directly to Supabase PostgreSQL database
     try {
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL !== "https://placeholder-project.supabase.co") {
-        const { error: dbError } = await supabaseServer
-          .from('bookings')
-          .insert([bookingPayload]);
-        
-        if (dbError) {
-          console.error('Supabase DB Insert Error:', dbError);
-        } else {
-          console.log('✅ Booking successfully saved to Supabase:', bookingId);
-        }
-      } else {
-        console.log('📝 Supabase URL not configured yet. Payload logged:', bookingId);
-      }
+      await query(
+        `INSERT INTO public.bookings (
+          booking_id, name, phone, email, pickup_location, drop_location,
+          travel_date, return_date, pickup_time, trip_type, service_type,
+          vehicle_type, passengers, requirements, package_duration,
+          source_page, source_section, status
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)`,
+        [
+          bookingId,
+          validatedData.name,
+          validatedData.phone,
+          validatedData.email || null,
+          validatedData.pickupLocation || 'Kanpur',
+          validatedData.dropLocation || null,
+          travelDate,
+          returnDate,
+          validatedData.travelTime || null,
+          validatedData.tripType || 'one_way',
+          validatedData.serviceType,
+          validatedData.vehicleType || null,
+          passengers,
+          validatedData.requirements || null,
+          validatedData.packageDuration || null,
+          validatedData.sourcePage || 'website',
+          validatedData.sourceSection || 'direct',
+          'new',
+        ]
+      );
+      console.log('✅ Booking successfully saved to Supabase:', bookingId);
     } catch (dbError) {
-      console.error('Database connection error (continuing anyway):', dbError);
+      console.error('Supabase DB Insert Error (continuing):', dbError);
     }
     
     // Send email notification (non-blocking)
@@ -98,34 +97,36 @@ export async function GET(req: Request) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     
-    const from = (page - 1) * limit;
-    const to = from + limit - 1;
+    const offset = (page - 1) * limit;
     
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let bookings: any[] = [];
     let total = 0;
     
     try {
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL !== "https://placeholder-project.supabase.co") {
-        let query = supabaseServer
-          .from('bookings')
-          .select('*', { count: 'exact' })
-          .order('created_at', { ascending: false })
-          .range(from, to);
+      let sql = 'SELECT * FROM public.bookings WHERE 1=1';
+      const params: any[] = [];
+      let paramIndex = 1;
 
-        if (status && status !== 'all') {
-          query = query.eq('status', status);
-        }
-        if (serviceType && serviceType !== 'all') {
-          query = query.eq('service_type', serviceType);
-        }
-
-        const { data, count, error } = await query;
-        if (!error && data) {
-          bookings = data;
-          total = count || data.length;
-        }
+      if (status && status !== 'all') {
+        sql += ` AND status = $${paramIndex++}`;
+        params.push(status);
       }
+      if (serviceType && serviceType !== 'all') {
+        sql += ` AND service_type = $${paramIndex++}`;
+        params.push(serviceType);
+      }
+
+      // Count query
+      const countRes = await query(sql.replace('SELECT *', 'SELECT count(*)'), params);
+      total = parseInt(countRes.rows[0].count);
+
+      // Paginated rows
+      sql += ` ORDER BY created_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`;
+      params.push(limit, offset);
+
+      const rowsRes = await query(sql, params);
+      bookings = rowsRes.rows;
     } catch (dbError) {
       console.error('Supabase query error:', dbError);
     }
