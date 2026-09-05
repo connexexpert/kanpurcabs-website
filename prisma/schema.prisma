@@ -1,0 +1,328 @@
+// Prisma schema for Kanpur Car Rental & Tourism Website
+// Database: PostgreSQL (via Neon)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ──────────────────────────────────────────
+// Admin User
+// ──────────────────────────────────────────
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin") // admin, super_admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+// ──────────────────────────────────────────
+// Cars / Fleet
+// ──────────────────────────────────────────
+model Car {
+  id            String     @id @default(cuid())
+  name          String     // e.g., "Maruti Suzuki Swift Dzire"
+  slug          String     @unique
+  category      String     // hatchback, sedan, suv, luxury, tempo_traveller
+  brand         String     // Maruti, Hyundai, Toyota, etc.
+  model         String     // Swift, Creta, Innova
+  year          Int?
+  seats         Int        @default(4)
+  doors         Int        @default(4)
+  luggage       Int        @default(2) // number of bags
+  transmission  String     @default("manual") // manual, automatic
+  fuelType      String     @default("petrol") // petrol, diesel, cng, electric
+  ac            Boolean    @default(true)
+  description   String?
+  features      String[]   // ["GPS", "Music System", "USB Charging", ...]
+  
+  // Pricing
+  pricePerKm    Float      @default(0)
+  pricePerDay   Float      @default(0)
+  pricePerHour  Float      @default(0)
+  minimumCharge Float      @default(0)
+  driverAllowance Float    @default(300)
+  nightCharge   Float      @default(250)
+  
+  // Status
+  isAvailable   Boolean    @default(true)
+  isFeatured    Boolean    @default(false)
+  sortOrder     Int        @default(0)
+  
+  // Relations
+  images        CarImage[]
+  bookings      Booking[]
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@map("cars")
+}
+
+model CarImage {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String  @default("")
+  isPrimary Boolean @default(false)
+  sortOrder Int     @default(0)
+  car       Car     @relation(fields: [carId], references: [id], onDelete: Cascade)
+  carId     String
+
+  @@map("car_images")
+}
+
+// ──────────────────────────────────────────
+// Services
+// ──────────────────────────────────────────
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  tagline     String?
+  description String?
+  content     String? // Rich text content for the full page
+  icon        String?  // Lucide icon name
+  image       String?
+  features    String[] // Key features list
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+// ──────────────────────────────────────────
+// Tour Packages
+// ──────────────────────────────────────────
+model TourPackage {
+  id           String   @id @default(cuid())
+  name         String
+  slug         String   @unique
+  tagline      String?
+  description  String?
+  content      String?
+  duration     String   // "Half Day", "Full Day", "2 Days / 1 Night"
+  distance     String?  // "~50 km", "~200 km"
+  destinations String[] // ["JK Temple", "Allen Zoo", ...]
+  highlights   String[]
+  itinerary    String? // JSON or rich text
+  
+  // Pricing
+  price         Float    @default(0)
+  priceLabel    String?  // "Starting from ₹2,500"
+  inclusions    String[]
+  exclusions    String[]
+  
+  // Media
+  image         String?
+  gallery       String[]
+  
+  // Status
+  isActive      Boolean  @default(true)
+  isFeatured    Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  // Relations
+  bookings      Booking[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("tour_packages")
+}
+
+// ──────────────────────────────────────────
+// Outstation Destinations
+// ──────────────────────────────────────────
+model Destination {
+  id          String   @id @default(cuid())
+  name        String   // "Lucknow"
+  slug        String   @unique // "kanpur-to-lucknow"
+  description String?
+  content     String?
+  distance    String   // "~80 km"
+  distanceKm  Float    @default(0) // for sorting/calculation
+  duration    String   // "~1.5 hours"
+  image       String?
+  highlights  String[] // attractions at destination
+  
+  // Pricing (starting from)
+  hatchbackPrice Float @default(0)
+  sedanPrice     Float @default(0)
+  suvPrice       Float @default(0)
+  tempoPrice     Float @default(0)
+  
+  // Route info
+  routeVia    String?  // "via NH-27"
+  tollInfo    String?
+  bestTime    String?  // "October to March"
+  
+  // Status
+  isPopular   Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("destinations")
+}
+
+// ──────────────────────────────────────────
+// Bookings / Enquiries
+// ──────────────────────────────────────────
+model Booking {
+  id              String   @id @default(cuid())
+  bookingId       String   @unique @default(cuid()) // Human-readable ID
+  
+  // Customer Info
+  name            String
+  phone           String
+  email           String?
+  
+  // Trip Details
+  pickupLocation  String
+  dropLocation    String?
+  travelDate      DateTime
+  returnDate      DateTime?
+  pickupTime      String?
+  tripType        String   @default("one_way") // one_way, round_trip, local, airport, tour
+  serviceType     String   // local_rental, outstation, airport_transfer, railway_transfer, sightseeing, corporate, wedding
+  vehicleType     String?  // hatchback, sedan, suv, tempo_traveller
+  passengers      Int      @default(1)
+  requirements    String?
+  
+  // Package/Duration (for local/tour)
+  packageDuration String?  // "4hr/40km", "8hr/80km", "12hr/120km"
+  
+  // Source tracking
+  sourcePage      String?  // Which page the enquiry came from
+  sourceSection   String?  // Which section/form (hero, sidebar, car-detail, etc.)
+  
+  // Status
+  status          String   @default("new") // new, confirmed, in_progress, completed, cancelled
+  adminNotes      String?
+  
+  // Relations
+  car             Car?     @relation(fields: [carId], references: [id])
+  carId           String?
+  tourPackage     TourPackage? @relation(fields: [tourPackageId], references: [id])
+  tourPackageId   String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("bookings")
+}
+
+// ──────────────────────────────────────────
+// Testimonials / Reviews
+// ──────────────────────────────────────────
+model Testimonial {
+  id         String   @id @default(cuid())
+  name       String
+  location   String?  // "Kanpur, UP"
+  rating     Int      @default(5) // 1-5
+  review     String
+  avatar     String?
+  service    String?  // Which service they used
+  isApproved Boolean  @default(false)
+  isFeatured Boolean  @default(false)
+  sortOrder  Int      @default(0)
+  
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("testimonials")
+}
+
+// ──────────────────────────────────────────
+// FAQs
+// ──────────────────────────────────────────
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String   @default("general") // general, booking, pricing, safety, outstation, local, airport
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("faqs")
+}
+
+// ──────────────────────────────────────────
+// Banners
+// ──────────────────────────────────────────
+model Banner {
+  id        String   @id @default(cuid())
+  title     String?
+  subtitle  String?
+  image     String
+  ctaText   String?
+  ctaLink   String?
+  page      String   @default("home") // home, cars, services, tours, etc.
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("banners")
+}
+
+// ──────────────────────────────────────────
+// Site Settings (Key-Value Store)
+// ──────────────────────────────────────────
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String // JSON string for complex values
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+// ──────────────────────────────────────────
+// Contact Messages
+// ──────────────────────────────────────────
+model ContactMessage {
+  id      String   @id @default(cuid())
+  name    String
+  email   String
+  phone   String?
+  subject String?
+  message String
+  isRead  Boolean  @default(false)
+  
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
+}
