@@ -3,9 +3,9 @@ import { Search, CalendarDays, CarFront } from 'lucide-react'
 
 export default function HowItWorks() {
   const steps = [
-    { icon: Search, title: 'Choose Your Service', desc: 'Select from local rental, outstation, airport transfer, or tour packages.' },
-    { icon: CalendarDays, title: 'Book & Confirm', desc: 'Fill in your travel details and get an instant quote. Confirm your booking.' },
-    { icon: CarFront, title: 'Enjoy Your Ride', desc: 'Our professional driver arrives on time. Sit back and enjoy your journey.' }
+    { icon: Search, title: 'Choose Your Ride', desc: 'Select from local car rental, self-drive bike hire, outstation cabs, or sightseeing tours.' },
+    { icon: CalendarDays, title: 'Book & Confirm', desc: 'Choose your date, pickup area in Kanpur, and package. Get instant confirmation.' },
+    { icon: CarFront, title: 'Enjoy Your Journey', desc: 'Ride on your own or let our professional chauffeur handle Kanpur traffic for you.' }
   ]
 
   return (

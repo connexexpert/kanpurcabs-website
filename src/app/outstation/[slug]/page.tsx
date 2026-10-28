@@ -5,7 +5,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 
 // Hardcode some sample data
 const routeData: Record<string, any> = {
-  'lucknow': { name: 'Lucknow', dist: '90 km', time: '2 hrs', sedan: '1,500', suv: '2,200', desc: 'Travel to the City of Nawabs comfortably via the NH27 / Lucknow-Kanpur Expressway. Perfect for airport drops to LKO or business meetings in Gomti Nagar.' },
+  'lucknow': { name: 'Lucknow', dist: '90 km', time: '2 hrs', sedan: '1,500', suv: '2,200', desc: 'Travel to the City of Nawabs comfortably via the NH27 / Lucknow-Kanpur Expressway. Perfect for family visits, shopping in Hazratganj, or business meetings in Gomti Nagar.' },
   'agra': { name: 'Agra', dist: '280 km', time: '4.5 hrs', sedan: '4,500', suv: '6,000', desc: 'Take a smooth ride to the city of the Taj Mahal via the Agra-Lucknow Expressway. Ideal for weekend getaways.' }
 };
 

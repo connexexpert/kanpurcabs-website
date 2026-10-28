@@ -11,7 +11,7 @@ export default function BookingsPage() {
   const sampleData = [
     { id: 'BKG-001', customer: 'Rahul Sharma', phone: '9876543210', service: 'Outstation', date: '2023-11-20', status: 'confirmed' },
     { id: 'BKG-002', customer: 'Priya Singh', phone: '9876543211', service: 'Local Hourly', date: '2023-11-21', status: 'new' },
-    { id: 'BKG-003', customer: 'Amit Kumar', phone: '9876543212', service: 'Airport Transfer', date: '2023-11-19', status: 'completed' },
+    { id: 'BKG-003', customer: 'Amit Kumar', phone: '9876543212', service: 'Bike Rental', date: '2023-11-19', status: 'completed' },
   ];
 
   const columns = [

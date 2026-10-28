@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import FleetShowcase from "@/components/home/FleetShowcase";
+import PricingSection from "@/components/home/PricingSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import PopularRoutes from "@/components/home/PopularRoutes";
 import TourPackages from "@/components/home/TourPackages";
@@ -11,9 +12,9 @@ import FAQSection from "@/components/home/FAQSection";
 import CTABanner from "@/components/home/CTABanner";
 
 export const metadata = {
-  title: "KanpurCabs - Reliable Car Rental & Tourism Services in Kanpur",
+  title: "KanpurCabs - Reliable Car & Bike Rentals in Kanpur",
   description:
-    "Book affordable cabs for local travel, outstation trips, airport transfers, and sightseeing tours across Kanpur and Uttar Pradesh with KanpurCabs.",
+    "Book affordable car and bike rentals, outstation cabs, and local sightseeing tours in Kanpur with transparent pricing, verified drivers, and 24/7 service.",
 };
 
 export default function HomePage() {
@@ -23,6 +24,7 @@ export default function HomePage() {
       <StatsCounter />
       <ServicesGrid />
       <FleetShowcase />
+      <PricingSection />
       <WhyChooseUs />
       <PopularRoutes />
       <TourPackages />

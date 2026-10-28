@@ -5,7 +5,7 @@ import { Quote, Star } from 'lucide-react'
 export default function TestimonialsCarousel() {
   const testimonials = [
     { name: 'Rahul Sharma', loc: 'Kanpur', text: 'Excellent service! Booked an outstation cab to Lucknow. The driver was on time, polite, and the car was very clean. Highly recommended for family travel.', rating: 5 },
-    { name: 'Priya Singh', loc: 'Delhi', text: 'Used their airport transfer service from Chakeri Airport. Very smooth experience. Fixed prices and no haggling required.', rating: 5 },
+    { name: 'Priya Singh', loc: 'Kakadeo, Kanpur', text: 'Rented an Activa 6G for 3 days while visiting Kanpur. Super smooth process, clean helmet provided, and instant deposit return. Highly recommended!', rating: 5 },
     { name: 'Amit Gupta', loc: 'Kanpur', text: 'Booked a 8hr local package for shopping and meetings. It was very convenient. The driver knew all the local routes well.', rating: 4 },
     { name: 'Sneha Verma', loc: 'Lucknow', text: 'Took the Kanpur sightseeing tour. Covered JK Temple and Bithoor. Great comfortable Innova and an excellent guide-like driver.', rating: 5 },
     { name: 'Vikram Yadav', loc: 'Kanpur', text: 'Best cab service in Kanpur. I regularly use their outstation cabs for my business trips to Agra and Delhi. Very reliable.', rating: 5 }

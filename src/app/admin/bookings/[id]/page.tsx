@@ -32,7 +32,7 @@ export default function BookingDetail({ params }: { params: Promise<{ id: string
             <p><span className="text-slate-500 w-24 inline-block">Service:</span> <strong>Outstation</strong></p>
             <p><span className="text-slate-500 w-24 inline-block">Date:</span> <strong>Nov 20, 2023</strong></p>
             <p><span className="text-slate-500 w-24 inline-block">Pickup:</span> <strong>Kanpur Central</strong></p>
-            <p><span className="text-slate-500 w-24 inline-block">Drop:</span> <strong>Lucknow Airport</strong></p>
+            <p><span className="text-slate-500 w-24 inline-block">Drop:</span> <strong>Lucknow Hazratganj</strong></p>
           </div>
         </div>
 

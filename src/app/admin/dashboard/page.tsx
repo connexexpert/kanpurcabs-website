@@ -9,7 +9,7 @@ export default function Dashboard() {
   const recentBookings = [
     { id: 'BKG-001', customer: 'Rahul Sharma', service: 'Outstation', date: '2023-11-20', status: 'confirmed' },
     { id: 'BKG-002', customer: 'Priya Singh', service: 'Local Hourly', date: '2023-11-21', status: 'new' },
-    { id: 'BKG-003', customer: 'Amit Kumar', service: 'Airport Transfer', date: '2023-11-19', status: 'completed' },
+    { id: 'BKG-003', customer: 'Amit Kumar', service: 'Bike Rental', date: '2023-11-19', status: 'completed' },
     { id: 'BKG-004', customer: 'Neha Gupta', service: 'Tour Package', date: '2023-11-25', status: 'in_progress' },
     { id: 'BKG-005', customer: 'Vikas Mishra', service: 'Outstation', date: '2023-11-18', status: 'cancelled' },
   ];

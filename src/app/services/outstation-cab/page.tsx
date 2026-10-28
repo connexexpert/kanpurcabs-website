@@ -109,8 +109,8 @@ export default function OutstationCabPage() {
                 </h3>
                 <p className="text-slate-600 mb-4 text-sm">
                   Pay only for the distance you travel. No need to pay for the
-                  return journey. Ideal for airport drops or permanent
-                  relocations.
+                  return journey. Ideal for city relocations, business visits,
+                  or direct travel.
                 </p>
                 <ul className="text-sm text-slate-700 space-y-2">
                   <li className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export default function OutstationCabPage() {
                 </h3>
                 <p className="text-slate-600 mb-4 text-sm">
                   Keep the cab with you for the entire duration of your trip.
-                  Perfect for holidays, weddings, and multi-city tours.
+                  Perfect for holidays, family visits, and multi-city tours.
                 </p>
                 <ul className="text-sm text-slate-700 space-y-2">
                   <li className="flex items-center gap-2">

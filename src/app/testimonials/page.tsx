@@ -20,7 +20,7 @@ const TESTIMONIALS = [
     name: "Priya Gupta",
     location: "Delhi",
     rating: 5,
-    text: "Used their service for Kanpur airport drop. Very reliable. The driver helped with the luggage and drove safely. Pricing is also very reasonable compared to others.",
+    text: "Rented an Activa 6G for 3 days to travel between Kakadeo and Swaroop Nagar. Instant paperwork with Aadhaar, complimentary ISI helmet, and great mileage. Best two-wheeler rental in Kanpur!",
   },
   {
     name: "Rahul Verma",
@@ -32,7 +32,7 @@ const TESTIMONIALS = [
     name: "Neha Singh",
     location: "Mumbai",
     rating: 5,
-    text: "Booked a tempo traveller for a family wedding in Kanpur. Managing transport for 12 people was seamless thanks to their professional service.",
+    text: "Booked an Ertiga for a family trip to Bithoor and Blue World Theme Park. Managing transport for 6 people was seamless thanks to their professional driver and clean car.",
   },
   {
     name: "Vikram Yadav",
@@ -50,7 +50,7 @@ const TESTIMONIALS = [
     name: "Sanjay Mishra",
     location: "Kanpur",
     rating: 5,
-    text: "Hired a luxury car for my daughter's wedding. The car was beautifully decorated and immaculate. Added a special touch to our event.",
+    text: "Booked a Royal Enfield Classic 350 for a weekend ride along the Ganga Barrage and Brahmavart Ghat. The bike was in mint condition with roaring engine health and smooth suspension.",
   },
   {
     name: "Aditya Tiwari",

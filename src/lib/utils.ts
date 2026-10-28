@@ -67,9 +67,9 @@ export function getPhoneLink(phone: string): string {
 
 export const SITE_CONFIG = {
   name: "KanpurCabs",
-  tagline: "Reliable Car Rental & Tourism Services in Kanpur",
+  tagline: "Premier Car & Bike Rentals in Kanpur",
   description:
-    "Book affordable car rentals, outstation cabs, airport transfers, and sightseeing tours in Kanpur. Professional drivers, well-maintained cars, 24/7 service.",
+    "Book affordable car and bike rentals, outstation cabs, and local sightseeing tours in Kanpur. Well-maintained fleet, verified drivers, transparent hourly pricing, and 24/7 service.",
   phone: "+91 98765 43210",
   whatsapp: "+919876543210",
   email: "info@kanpurcabs.com",
@@ -95,28 +95,40 @@ export const CAR_CATEGORIES = [
   { value: "tempo_traveller", label: "Tempo Traveller", icon: "Bus" },
 ] as const;
 
+export const BIKE_CATEGORIES = [
+  { value: "scooter", label: "Scooters (Activa / Jupiter)", icon: "Bike" },
+  { value: "commuter", label: "Commuter (Splendor / Shine)", icon: "Bike" },
+  { value: "sports", label: "Sports (Pulsar / Apache)", icon: "Bike" },
+  { value: "cruiser", label: "Cruiser (Royal Enfield Classic 350)", icon: "Bike" },
+] as const;
+
 export const TRIP_TYPES = [
-  { value: "one_way", label: "One Way" },
-  { value: "round_trip", label: "Round Trip" },
-  { value: "local", label: "Local Rental" },
-  { value: "airport", label: "Airport Transfer" },
-  { value: "tour", label: "Tour / Sightseeing" },
+  { value: "local", label: "Local Car Rental" },
+  { value: "bike", label: "Bike / Scooter Rental" },
+  { value: "outstation_oneway", label: "Outstation (One Way)" },
+  { value: "outstation_round", label: "Outstation (Round Trip)" },
+  { value: "tour", label: "Sightseeing Tour Package" },
 ] as const;
 
 export const SERVICE_TYPES = [
   { value: "local_rental", label: "Local Car Rental" },
-  { value: "outstation", label: "Outstation Cab" },
-  { value: "airport_transfer", label: "Airport Transfer" },
-  { value: "railway_transfer", label: "Railway Station Transfer" },
-  { value: "sightseeing", label: "Sightseeing Tour" },
-  { value: "corporate", label: "Corporate Car Rental" },
-  { value: "wedding", label: "Wedding Car Rental" },
+  { value: "bike_rental", label: "Bike & Scooter Rental" },
+  { value: "outstation", label: "Outstation Cabs" },
+  { value: "sightseeing", label: "Sightseeing Tours" },
+  { value: "corporate", label: "Corporate Business Travel" },
 ] as const;
 
 export const LOCAL_PACKAGES = [
   { value: "4hr_40km", label: "4 Hours / 40 KMs", hours: 4, kms: 40 },
   { value: "8hr_80km", label: "8 Hours / 80 KMs", hours: 8, kms: 80 },
   { value: "12hr_120km", label: "12 Hours / 120 KMs", hours: 12, kms: 120 },
+] as const;
+
+export const BIKE_PACKAGES = [
+  { value: "4hr_40km", label: "4 Hours (Hourly Ride)", hours: 4, kms: 40 },
+  { value: "8hr_80km", label: "8 Hours (Half Day)", hours: 8, kms: 80 },
+  { value: "12hr_120km", label: "12 Hours (Full Day)", hours: 12, kms: 120 },
+  { value: "24hr_daily", label: "24 Hours (Daily Rental)", hours: 24, kms: 200 },
 ] as const;
 
 export const BOOKING_STATUSES = [
@@ -148,9 +160,9 @@ export const KANPUR_AREAS = [
   "Naubasta",
   "Vikas Nagar",
   "Transport Nagar",
-  "Kanpur Central Station",
-  "Govindpuri Railway Station",
-  "Kanpur Airport (Chakeri)",
+  "Kanpur Central Area",
+  "Govindpuri Area",
+  "Chakeri Area",
   "GT Road",
   "Bithoor",
 ] as const;

@@ -58,14 +58,14 @@ const FAQS = [
     a: "Yes, we offer 8 hours/80 km and 12 hours/120 km packages for local sightseeing and city usage in Kanpur.",
   },
   {
-    category: "Airport",
-    q: "Do you provide airport transfer services?",
-    a: "Yes, we provide pickup and drop services to Kanpur Airport, Lucknow Airport (CCSIA), and other nearby airports.",
+    category: "Bikes",
+    q: "How does the bike and scooter rental service work?",
+    a: "You can rent scooties and bikes on hourly (4h, 8h, 12h), 24-hour, or weekly packages. Pickup hubs are located at Civil Lines, Kakadeo, Swaroop Nagar, and IIT Gate with original DL and Aadhaar card verification.",
   },
   {
-    category: "Airport",
-    q: "Will the driver wait if my flight is delayed?",
-    a: "Yes, our drivers track flight statuses and will wait for you. We provide complimentary waiting time up to 1 hour for airport pickups.",
+    category: "Bikes",
+    q: "Is a helmet provided with bike rentals?",
+    a: "Yes, one complimentary ISI-certified helmet is provided with every bike rental. A secondary helmet can be added upon request. All two-wheelers include clean documentation and comprehensive insurance.",
   },
   {
     category: "Safety",
@@ -91,7 +91,7 @@ const CATEGORIES = [
   "Safety",
   "Outstation",
   "Local",
-  "Airport",
+  "Bikes",
 ];
 
 export default function FAQPage() {

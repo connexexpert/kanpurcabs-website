@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { MapPin, Calendar, Clock, ArrowRight } from 'lucide-react';
 
-type TabType = 'local' | 'outstation' | 'transfer' | 'tour';
+type TabType = 'local' | 'bike' | 'outstation' | 'tour';
 
 export default function BookingFormTabs({ className }: { className?: string }) {
   const router = useRouter();
@@ -30,8 +30,8 @@ export default function BookingFormTabs({ className }: { className?: string }) {
     // Map active tab to service type
     const serviceMap = {
       local: 'Local Rental',
+      bike: 'Bike Rental',
       outstation: 'Outstation',
-      transfer: 'Airport Transfer',
       tour: 'Sightseeing Tour'
     };
     
@@ -46,9 +46,9 @@ export default function BookingFormTabs({ className }: { className?: string }) {
   };
 
   const tabs: { id: TabType; label: string }[] = [
-    { id: 'local', label: 'Local' },
+    { id: 'local', label: 'Local Car' },
+    { id: 'bike', label: 'Bike Rental' },
     { id: 'outstation', label: 'Outstation' },
-    { id: 'transfer', label: 'Airport/Railway' },
     { id: 'tour', label: 'Tour Packages' },
   ];
 
@@ -117,17 +117,32 @@ export default function BookingFormTabs({ className }: { className?: string }) {
             </>
           )}
 
-          {activeTab === 'transfer' && (
+          {activeTab === 'bike' && (
             <>
               <div className="w-full md:flex-1 relative">
-                <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wider">Pickup / Drop</label>
+                <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wider">Kanpur Pickup Hub</label>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500" />
                   <select name="pickup" value={formData.pickup} onChange={handleInputChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none" required>
-                    <option value="">Select Station/Airport</option>
-                    <option value="Kanpur Central">Kanpur Central Railway Station</option>
-                    <option value="Lucknow Airport">Lucknow Airport</option>
-                    <option value="Kanpur Airport">Kanpur Airport</option>
+                    <option value="">Select Pickup Hub</option>
+                    <option value="Civil Lines Hub">Civil Lines Hub</option>
+                    <option value="Kakadeo Hub (Coaching Nagar)">Kakadeo Hub (Coaching Nagar)</option>
+                    <option value="Swaroop Nagar Hub">Swaroop Nagar Hub</option>
+                    <option value="IIT Kanpur Gate Hub">IIT Kanpur Gate Hub</option>
+                  </select>
+                </div>
+              </div>
+              <div className="w-full md:flex-1 relative">
+                <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wider">Bike Package</label>
+                <div className="relative">
+                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500" />
+                  <select name="package" value={formData.package} onChange={handleInputChange} className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none" required>
+                    <option value="">Select Package</option>
+                    <option value="4 Hours (40 km)">4 Hours (40 km) - ₹249</option>
+                    <option value="8 Hours (80 km)">8 Hours (80 km) - ₹449</option>
+                    <option value="12 Hours (120 km)">12 Hours (120 km) - ₹599</option>
+                    <option value="24 Hours (Daily)">24 Hours (Daily Unlimited/150 km) - ₹799</option>
+                    <option value="7 Days Weekly">7 Days Weekly - ₹3,999</option>
                   </select>
                 </div>
               </div>

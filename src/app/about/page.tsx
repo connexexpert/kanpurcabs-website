@@ -78,7 +78,7 @@ export default function AboutPage() {
                 <p>
                   Over the past decade, we have proudly served thousands of
                   customers, facilitating everything from daily local commutes
-                  and airport transfers to outstation tours and corporate
+                  and two-wheeler rentals to outstation tours and corporate
                   travel. Our commitment to excellence and customer satisfaction
                   has made us one of the most trusted names in Kanpur's
                   transportation sector.
