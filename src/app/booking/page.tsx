@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { bookingSchema, BookingFormData } from '@/lib/validations';
 import PageHero from '@/components/ui/PageHero';
-import { CheckCircle2, Loader2, Mail, Clock, ShieldCheck, MapPin, PhoneCall, Bike, Car } from 'lucide-react';
+import { CheckCircle2, Loader2, Mail, Clock, ShieldCheck, MapPin, PhoneCall, Bike, Car, AlertCircle } from 'lucide-react';
 import { cn, SITE_CONFIG, getPhoneLink } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -265,11 +265,11 @@ function BookingPage() {
                   <div>
                     <label className="block text-sm font-bold text-slate-800 mb-1.5">Service Type *</label>
                     <select {...register('serviceType')} className="w-full p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-600 bg-white font-semibold text-slate-800">
-                      <option value="Local Rental">🚗 Local Car Rental (Hourly within Kanpur)</option>
-                      <option value="Bike Rental">🏍️ Bike & Scooter Rental (Self-Drive in Kanpur)</option>
-                      <option value="Outstation">🛣️ Outstation Cabs (Intercity One-Way & Round Trip)</option>
-                      <option value="Sightseeing Tour">🏛️ Kanpur Sightseeing & Tour Packages</option>
-                      <option value="Corporate">💼 Corporate Travel & Monthly Retainer</option>
+                      <option value="Local Rental">Local Car Rental (Hourly within Kanpur)</option>
+                      <option value="Bike Rental">Bike & Scooter Rental (Self-Drive in Kanpur)</option>
+                      <option value="Outstation">Outstation Cabs (Intercity One-Way & Round Trip)</option>
+                      <option value="Sightseeing Tour">Kanpur Sightseeing & Tour Packages</option>
+                      <option value="Corporate">Corporate Travel & Monthly Retainer</option>
                     </select>
                   </div>
 
@@ -416,8 +416,8 @@ function BookingPage() {
                     </>
                   ) : (
                     <>
-                      <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-5 text-3xl">
-                        ⚠️
+                      <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-5 text-red-600">
+                        <AlertCircle className="w-10 h-10" />
                       </div>
                       <h2 className="text-2xl font-bold text-slate-900 mb-2">Submission Error</h2>
                       <p className="text-red-600 mb-6 text-sm">{bookingResult.message}</p>
@@ -461,9 +461,10 @@ function BookingPage() {
                     </li>
                   )}
                 </ul>
-                <div className="mt-4 pt-4 border-t border-primary-800/80">
+                <div className="mt-4 pt-4 border-t border-primary-800/80 flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    ✓ Zero upfront payment required for enquiry. Pay after trip or at vehicle pickup.
+                    Zero upfront payment required for enquiry. Pay after trip or at vehicle pickup.
                   </p>
                 </div>
               </div>

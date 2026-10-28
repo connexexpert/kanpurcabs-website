@@ -32,6 +32,7 @@ const BIKE_FLEET = [
     securityDeposit: 1000,
     bestFor: "City commute, coaching, shopping in Naveen Market",
     badge: "Most Popular",
+    imageUrl: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "TVS Jupiter 125",
@@ -43,6 +44,7 @@ const BIKE_FLEET = [
     securityDeposit: 1000,
     bestFor: "Comfortable family ride, ample boot storage",
     badge: "High Comfort",
+    imageUrl: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Hero Splendor Plus",
@@ -54,6 +56,7 @@ const BIKE_FLEET = [
     securityDeposit: 1000,
     bestFor: "Maximum fuel economy, daily local errands",
     badge: "Budget Friendly",
+    imageUrl: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Honda Shine 125",
@@ -65,6 +68,7 @@ const BIKE_FLEET = [
     securityDeposit: 1000,
     bestFor: "Smooth reliable city & highway commute",
     badge: "Smooth Ride",
+    imageUrl: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Bajaj Pulsar 150",
@@ -76,6 +80,7 @@ const BIKE_FLEET = [
     securityDeposit: 1500,
     bestFor: "College students, stylish city riding",
     badge: "Youth Choice",
+    imageUrl: "https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=800&q=80",
   },
   {
     name: "Royal Enfield Classic 350",
@@ -87,6 +92,7 @@ const BIKE_FLEET = [
     securityDeposit: 2500,
     bestFor: "Long drives, Ganga Barrage cruises, Bithoor tours",
     badge: "Premium Cruiser",
+    imageUrl: "https://images.unsplash.com/photo-1558981420-87aa9dad1c89?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -256,14 +262,20 @@ export default function BikeRentalPage() {
                 key={idx}
                 className="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-all flex flex-col"
               >
-                <div className="h-44 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-6 relative">
-                  <span className="absolute top-3 right-3 bg-primary-900 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                <div className="h-48 relative overflow-hidden bg-slate-100 group">
+                  <img
+                    src={bike.imageUrl}
+                    alt={bike.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <span className="absolute top-3 right-3 bg-primary-900/90 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
                     {bike.badge}
                   </span>
-                  <div className="text-center">
-                    <Bike className="w-16 h-16 text-primary-700 mx-auto mb-2 opacity-80" />
-                    <span className="text-slate-500 font-semibold text-sm">{bike.name}</span>
-                  </div>
+                  <span className="absolute bottom-3 left-3 text-white text-xs font-bold uppercase tracking-wider drop-shadow-md">
+                    Self Drive • Helmet Included
+                  </span>
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col">

@@ -13,21 +13,21 @@ export default function FleetShowcase() {
   const bikeTabs = ['All', 'Scooter', 'Commuter', 'Sports', 'Cruiser']
 
   const cars = [
-    { name: 'Maruti Suzuki Swift', type: 'Hatchback', seats: 4, trans: 'Manual', fuel: 'Petrol', ac: 'AC', pricePerKm: 10, hourlyRate: '₹1,200 (4h)', slug: 'maruti-swift' },
-    { name: 'Maruti Suzuki Dzire', type: 'Sedan', seats: 4, trans: 'Manual', fuel: 'Petrol/CNG', ac: 'AC', pricePerKm: 11, hourlyRate: '₹1,400 (4h)', slug: 'maruti-dzire' },
-    { name: 'Hyundai Aura', type: 'Sedan', seats: 4, trans: 'Manual', fuel: 'Petrol', ac: 'AC', pricePerKm: 11, hourlyRate: '₹1,400 (4h)', slug: 'hyundai-aura' },
-    { name: 'Toyota Innova Crysta', type: 'SUV', seats: 7, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 18, hourlyRate: '₹2,200 (4h)', slug: 'innova-crysta' },
-    { name: 'Mahindra Scorpio', type: 'SUV', seats: 7, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 15, hourlyRate: '₹2,000 (4h)', slug: 'mahindra-scorpio' },
-    { name: 'Force Tempo Traveller', type: 'Tempo Traveller', seats: 12, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 24, hourlyRate: '₹3,200 (4h)', slug: 'tempo-traveller-12' },
+    { name: 'Maruti Suzuki Swift', type: 'Hatchback', seats: 4, trans: 'Manual', fuel: 'Petrol', ac: 'AC', pricePerKm: 10, hourlyRate: '₹1,200 (4h)', slug: 'maruti-swift', imageUrl: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Maruti Suzuki Dzire', type: 'Sedan', seats: 4, trans: 'Manual', fuel: 'Petrol/CNG', ac: 'AC', pricePerKm: 11, hourlyRate: '₹1,400 (4h)', slug: 'maruti-dzire', imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Hyundai Aura', type: 'Sedan', seats: 4, trans: 'Manual', fuel: 'Petrol', ac: 'AC', pricePerKm: 11, hourlyRate: '₹1,400 (4h)', slug: 'hyundai-aura', imageUrl: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Toyota Innova Crysta', type: 'SUV', seats: 7, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 18, hourlyRate: '₹2,200 (4h)', slug: 'innova-crysta', imageUrl: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Mahindra Scorpio', type: 'SUV', seats: 7, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 15, hourlyRate: '₹2,000 (4h)', slug: 'mahindra-scorpio', imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Force Tempo Traveller', type: 'Tempo Traveller', seats: 12, trans: 'Manual', fuel: 'Diesel', ac: 'AC', pricePerKm: 24, hourlyRate: '₹3,200 (4h)', slug: 'tempo-traveller-12', imageUrl: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80' },
   ]
 
   const bikes = [
-    { name: 'Honda Activa 6G', type: 'Scooter', engine: '110 cc', mileage: '50 km/l', trans: 'Automatic', dailyPrice: 400, hourlyRate: '₹50/hr', badge: 'Popular Scooter' },
-    { name: 'TVS Jupiter 125', type: 'Scooter', engine: '125 cc', mileage: '50 km/l', trans: 'Automatic', dailyPrice: 450, hourlyRate: '₹55/hr', badge: 'Comfort King' },
-    { name: 'Hero Splendor Plus', type: 'Commuter', engine: '100 cc', mileage: '68 km/l', trans: 'Manual', dailyPrice: 400, hourlyRate: '₹50/hr', badge: 'Best Mileage' },
-    { name: 'Honda Shine 125', type: 'Commuter', engine: '125 cc', mileage: '58 km/l', trans: 'Manual', dailyPrice: 500, hourlyRate: '₹60/hr', badge: 'Smooth Commute' },
-    { name: 'Bajaj Pulsar 150', type: 'Sports', engine: '150 cc', mileage: '45 km/l', trans: 'Manual', dailyPrice: 650, hourlyRate: '₹80/hr', badge: 'Youth Choice' },
-    { name: 'Royal Enfield Classic 350', type: 'Cruiser', engine: '350 cc', mileage: '35 km/l', trans: 'Manual', dailyPrice: 1100, hourlyRate: '₹140/hr', badge: 'Iconic Cruiser' },
+    { name: 'Honda Activa 6G', type: 'Scooter', engine: '110 cc', mileage: '50 km/l', trans: 'Automatic', dailyPrice: 400, hourlyRate: '₹50/hr', badge: 'Popular Scooter', imageUrl: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80' },
+    { name: 'TVS Jupiter 125', type: 'Scooter', engine: '125 cc', mileage: '50 km/l', trans: 'Automatic', dailyPrice: 450, hourlyRate: '₹55/hr', badge: 'Comfort King', imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Hero Splendor Plus', type: 'Commuter', engine: '100 cc', mileage: '68 km/l', trans: 'Manual', dailyPrice: 400, hourlyRate: '₹50/hr', badge: 'Best Mileage', imageUrl: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Honda Shine 125', type: 'Commuter', engine: '125 cc', mileage: '58 km/l', trans: 'Manual', dailyPrice: 500, hourlyRate: '₹60/hr', badge: 'Smooth Commute', imageUrl: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Bajaj Pulsar 150', type: 'Sports', engine: '150 cc', mileage: '45 km/l', trans: 'Manual', dailyPrice: 650, hourlyRate: '₹80/hr', badge: 'Youth Choice', imageUrl: 'https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=800&q=80' },
+    { name: 'Royal Enfield Classic 350', type: 'Cruiser', engine: '350 cc', mileage: '35 km/l', trans: 'Manual', dailyPrice: 1100, hourlyRate: '₹140/hr', badge: 'Iconic Cruiser', imageUrl: 'https://images.unsplash.com/photo-1558981420-87aa9dad1c89?auto=format&fit=crop&w=800&q=80' },
   ]
 
   const filteredCars = activeCarTab === 'All' ? cars : cars.filter(c => c.type === activeCarTab)
@@ -99,12 +99,20 @@ export default function FleetShowcase() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
               {filteredCars.map((car, index) => (
                 <div key={index} className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group">
-                  <div className="h-44 bg-gradient-to-br from-blue-50 to-slate-100 w-full flex flex-col items-center justify-center relative p-4">
-                    <span className="absolute top-3 right-3 bg-white text-slate-700 text-xs px-2.5 py-1 rounded-full font-bold shadow-sm border border-slate-200">
+                  <div className="h-48 relative overflow-hidden bg-slate-100 w-full group">
+                    <img
+                      src={car.imageUrl}
+                      alt={car.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-slate-800 text-xs px-2.5 py-1 rounded-full font-bold shadow-sm">
                       {car.type}
                     </span>
-                    <Car className="w-16 h-16 text-primary-800/80 mb-1 group-hover:scale-105 transition-transform" />
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{car.name}</span>
+                    <span className="absolute bottom-3 left-3 text-white text-xs font-bold uppercase tracking-wider drop-shadow-md">
+                      Chauffeur Included
+                    </span>
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col">
@@ -185,12 +193,20 @@ export default function FleetShowcase() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
               {filteredBikes.map((bike, index) => (
                 <div key={index} className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group">
-                  <div className="h-44 bg-gradient-to-br from-orange-50 to-slate-100 w-full flex flex-col items-center justify-center relative p-4">
+                  <div className="h-48 relative overflow-hidden bg-slate-100 w-full group">
+                    <img
+                      src={bike.imageUrl}
+                      alt={bike.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                     <span className="absolute top-3 right-3 bg-accent-500 text-white text-xs px-2.5 py-1 rounded-full font-bold shadow-sm">
                       {bike.badge}
                     </span>
-                    <Bike className="w-16 h-16 text-accent-600 mb-1 group-hover:scale-105 transition-transform" />
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{bike.name}</span>
+                    <span className="absolute bottom-3 left-3 text-white text-xs font-bold uppercase tracking-wider drop-shadow-md">
+                      Self Drive • Helmet Included
+                    </span>
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col">

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { MapPin, Calendar, Clock, Car, Bike, Compass, CheckCircle2, ShieldCheck, PhoneCall } from 'lucide-react'
+import { MapPin, Calendar, Clock, Car, Bike, Compass, CheckCircle2, ShieldCheck, PhoneCall, Star } from 'lucide-react'
 import { cn, SITE_CONFIG, getPhoneLink } from '@/lib/utils'
 
 export default function HeroSection() {
@@ -37,10 +37,10 @@ export default function HeroSection() {
   }
 
   const tabs = [
-    { id: 'local', label: '🚗 Local Car Rental', icon: Car },
-    { id: 'bike', label: '🏍️ Bike & Scooter Rental', icon: Bike },
-    { id: 'outstation', label: '🛣️ Outstation Cabs', icon: Car },
-    { id: 'tour', label: '🏛️ Kanpur Sightseeing', icon: Compass },
+    { id: 'local', label: 'Local Car Rental', icon: Car },
+    { id: 'bike', label: 'Bike & Scooter Rental', icon: Bike },
+    { id: 'outstation', label: 'Outstation Cabs', icon: Car },
+    { id: 'tour', label: 'Kanpur Sightseeing', icon: Compass },
   ] as const
 
   return (
@@ -85,7 +85,9 @@ export default function HeroSection() {
                 <span className="text-xs text-slate-300">Cars & Bikes</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-3.5 py-2.5 rounded-xl border border-white/10 text-center sm:text-left">
-                <span className="font-extrabold text-xl text-accent-400 block">4.9 ★</span>
+                <span className="font-extrabold text-xl text-accent-400 flex items-center justify-center sm:justify-start gap-1">
+                  4.9 <Star className="w-4 h-4 fill-accent-400 text-accent-400" />
+                </span>
                 <span className="text-xs text-slate-300">Google Rated</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-3.5 py-2.5 rounded-xl border border-white/10 text-center sm:text-left">

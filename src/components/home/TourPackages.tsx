@@ -4,10 +4,34 @@ import { Clock } from 'lucide-react'
 
 export default function TourPackages() {
   const packages = [
-    { title: 'Kanpur Half-Day City Tour', duration: '4 hours', highlights: ['JK Temple', 'Allen Zoo', 'Moti Jheel'], price: '1,500' },
-    { title: 'Kanpur Full-Day City Tour', duration: '8 hours', highlights: ['Complete sightseeing', 'All major attractions', 'Flexible itinerary'], price: '2,500' },
-    { title: 'Bithoor Pilgrimage Tour', duration: '5 hours', highlights: ['Brahmavart Ghat', 'Valmiki Ashram', 'Temples'], price: '1,800' },
-    { title: 'Ayodhya-Prayagraj Pilgrimage', duration: '2 Days', highlights: ['Ram Mandir', 'Triveni Sangam', 'Major Temples'], price: '6,500' }
+    {
+      title: 'Kanpur Half-Day City Tour',
+      duration: '4 hours',
+      highlights: ['JK Temple', 'Allen Forest Zoo', 'Moti Jheel'],
+      price: '1,500',
+      imageUrl: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Kanpur Full-Day City Tour',
+      duration: '8 hours',
+      highlights: ['Complete city sightseeing', 'Ganga Barrage & Ghats', 'Blue World & Moti Jheel'],
+      price: '2,500',
+      imageUrl: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Bithoor Pilgrimage Tour',
+      duration: '5 hours',
+      highlights: ['Brahmavart Ghat', 'Valmiki Ashram', 'Sacred Ganga Temples'],
+      price: '1,800',
+      imageUrl: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: 'Ayodhya-Prayagraj Pilgrimage',
+      duration: '2 Days',
+      highlights: ['Ram Mandir Darshan', 'Triveni Sangam Prayagraj', 'Hanuman Garhi'],
+      price: '6,500',
+      imageUrl: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+    },
   ]
 
   return (
@@ -26,11 +50,17 @@ export default function TourPackages() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {packages.map((pkg, index) => (
             <div key={index} className="bg-white flex flex-col sm:flex-row rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-              <div className="w-full sm:w-2/5 h-48 sm:h-auto bg-slate-200 relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-slate-900/80" />
+              <div className="w-full sm:w-2/5 h-48 sm:h-auto bg-slate-200 relative overflow-hidden group">
+                <img
+                  src={pkg.imageUrl}
+                  alt={pkg.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4">
-                  <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md text-white text-xs px-2 py-1 rounded">
-                    <Clock className="w-3 h-3" /> {pkg.duration}
+                  <span className="inline-flex items-center gap-1 bg-black/50 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-semibold">
+                    <Clock className="w-3 h-3 text-accent-400" /> {pkg.duration}
                   </span>
                 </div>
               </div>

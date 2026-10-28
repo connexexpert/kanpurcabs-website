@@ -23,7 +23,7 @@ export async function POST(req: Request) {
           validatedData.message,
         ]
       );
-      console.log('✅ Contact message saved to Supabase');
+      console.log('[Supabase] Contact message saved successfully');
     } catch (dbError) {
       console.error('Database connection error (continuing anyway):', dbError);
     }

@@ -29,6 +29,12 @@ const CARS_DATA = [
     minCharge: 2500,
     driverAllowance: 300,
     nightCharge: 250,
+    imageUrl: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "hyundai-i20",
@@ -45,6 +51,12 @@ const CARS_DATA = [
     minCharge: 2500,
     driverAllowance: 300,
     nightCharge: 250,
+    imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "maruti-dzire",
@@ -61,6 +73,12 @@ const CARS_DATA = [
     minCharge: 3000,
     driverAllowance: 300,
     nightCharge: 250,
+    imageUrl: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "honda-city",
@@ -77,6 +95,12 @@ const CARS_DATA = [
     minCharge: 3500,
     driverAllowance: 300,
     nightCharge: 250,
+    imageUrl: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "toyota-innova-crysta",
@@ -93,6 +117,12 @@ const CARS_DATA = [
     minCharge: 4500,
     driverAllowance: 400,
     nightCharge: 300,
+    imageUrl: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "mahindra-scorpio",
@@ -109,6 +139,12 @@ const CARS_DATA = [
     minCharge: 4000,
     driverAllowance: 400,
     nightCharge: 300,
+    imageUrl: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "mercedes-e-class",
@@ -125,6 +161,12 @@ const CARS_DATA = [
     minCharge: 10000,
     driverAllowance: 500,
     nightCharge: 500,
+    imageUrl: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     slug: "force-traveller",
@@ -141,6 +183,12 @@ const CARS_DATA = [
     minCharge: 5500,
     driverAllowance: 500,
     nightCharge: 400,
+    imageUrl: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80"
+    ]
   },
 ];
 
@@ -192,11 +240,39 @@ export default async function CarDetailPage({
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Gallery Placeholder */}
-            <div className="bg-gradient-to-br from-blue-100 to-slate-200 rounded-2xl h-80 md:h-[400px] flex items-center justify-center border border-slate-200">
-              <span className="text-slate-500 text-lg font-medium">
-                Image Gallery Placeholder
-              </span>
+            {/* Car Photo Gallery */}
+            <div className="space-y-4">
+              <div className="relative rounded-2xl h-80 md:h-[420px] overflow-hidden border border-slate-200 bg-slate-100 shadow-sm group">
+                <img
+                  src={car.imageUrl}
+                  alt={car.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                  <span className="text-white text-xs sm:text-sm font-bold bg-primary-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+                    Chauffeur Driven • Commercial Sanitized Fleet
+                  </span>
+                  <span className="text-white text-xs bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-md">
+                    Kanpur & UP Routes
+                  </span>
+                </div>
+              </div>
+              
+              {car.gallery && (
+                <div className="grid grid-cols-3 gap-3">
+                  {car.gallery.map((img, i) => (
+                    <div key={i} className="h-24 sm:h-28 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm group">
+                      <img
+                        src={img}
+                        alt={`${car.name} detail view ${i + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Header */}

@@ -47,7 +47,7 @@ export async function POST(req: Request) {
           'new',
         ]
       );
-      console.log('✅ Booking successfully saved to Supabase:', bookingId);
+      console.log('[Supabase] Booking successfully saved:', bookingId);
     } catch (dbError) {
       console.error('Supabase DB Insert Error (continuing):', dbError);
     }
