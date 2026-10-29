@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | KanpurCabs",
+  title: "Terms & Conditions | KanpurDrivers",
   description:
-    "Terms and conditions for booking and using car rental services with KanpurCabs.",
+    "Terms and conditions for booking and hiring driver and rider services with KanpurDrivers.",
 };
 
 export default function TermsPage() {
@@ -28,8 +28,8 @@ export default function TermsPage() {
 
           <h2>1. Introduction</h2>
           <p>
-            Welcome to KanpurCabs. By accessing our website and utilizing our
-            car rental services, you agree to be bound by the following Terms &
+            Welcome to KanpurDrivers. By accessing our website and utilizing our
+            driver and rider services, you agree to be bound by the following Terms &
             Conditions. Please read them carefully.
           </p>
 
@@ -119,11 +119,10 @@ export default function TermsPage() {
 
           <h2>7. Liability</h2>
           <p>
-            KanpurCabs shall not be liable for any delays, missed flights, or
-            losses caused by traffic, weather conditions, mechanical breakdowns,
-            or circumstances beyond our control. Our liability is limited
-            strictly to providing a replacement vehicle (subject to
-            availability) or a proportional refund for unutilized services.
+            KanpurDrivers shall not be liable for any delays, missed appointments, or
+            losses caused by abnormal traffic jams, severe weather conditions, mechanical breakdowns of customer's vehicle,
+            or circumstances beyond reasonable control. Our liability is limited
+            strictly to providing a replacement driver or a refund of unutilized duty fees.
           </p>
 
           <h2>8. Dispute Resolution</h2>
@@ -136,7 +135,7 @@ export default function TermsPage() {
           <h2>9. Contact Us</h2>
           <p>
             If you have any questions about these Terms, please contact us at
-            info@kanpurcabs.com or call our helpline.
+            info@kanpurdrivers.com or call our dispatch helpline.
           </p>
         </div>
       </div>

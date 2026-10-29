@@ -11,307 +11,312 @@ import {
   Clock,
   Sparkles,
   CheckCircle2,
+  Moon,
+  UserCheck,
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Car & Bike Rental Services in Kanpur | KanpurCabs",
+  title: "Professional Driver & Rider Services in Kanpur | KanpurDrivers",
   description:
-    "Explore our complete range of vehicle rentals in Kanpur organized by Cars (Local hourly, Outstation, Corporate, Tours) and Bikes (Self-drive Scooters, Commuters, Cruisers).",
+    "Explore our full range of driver hire services in Kanpur: Local Hourly Car Drivers, Outstation Highway Chauffeurs, Monthly Permanent Drivers, and On-Demand Two-Wheeler Riders.",
 };
 
 const carServices = [
   {
-    id: "local-car",
-    title: "Local Hourly Car Rental",
-    badge: "Chauffeur Included",
+    id: "local-car-driver",
+    title: "Local Hourly Car Driver",
+    badge: "In Your Own Car",
     description:
-      "Flexible 4h/40km, 8h/80km, and 12h/120km packages with professional driver for city errands, shopping in Hazratganj or Mall Road, family events, and medical visits.",
-    features: ["Dedicated professional chauffeur", "Doorstep pickup in Kanpur", "Clean, AC hatchbacks, sedans & SUVs"],
+      "Flexible 4h (₹400), 8h (₹700), and 12h (₹950) duty packages with a professional chauffeur for city errands, shopping on Mall Road, doctor visits, and family events across Kanpur.",
+    features: [
+      "Manual & Automatic cars expert",
+      "Doorstep arrival in 45-60 mins",
+      "Zero fuel/km charges (Your car)",
+    ],
     icon: MapPin,
     href: "/services/local-car-rental",
-    bookHref: "/booking?serviceType=Local+Rental",
+    bookHref: "/booking?serviceType=Local+Hourly+Car+Driver",
     color: "bg-blue-100 text-blue-700",
   },
   {
-    id: "outstation-car",
-    title: "Outstation Cabs",
-    badge: "One-Way & Round Trips",
+    id: "outstation-driver",
+    title: "Outstation Highway Driver",
+    badge: "Expressway Certified",
     description:
-      "Intercity cab services connecting Kanpur to Lucknow, Ayodhya, Agra, Prayagraj, Varanasi, Delhi, and Noida. Pay only for one-way drops or book round-trips.",
-    features: ["Fixed transparent rates per km", "Expressway toll & fuel guidance", "Punctual highway-tested drivers"],
-    icon: Car,
+      "Experienced highway chauffeurs for same-day and multi-day road trips from Kanpur to Lucknow, Ayodhya, Delhi, Agra, Varanasi, and Prayagraj in your personal vehicle.",
+    features: [
+      "Same-day ₹1,000 / day + ₹250 food DA",
+      "Overnight stay ₹1,200 / day + ₹400 DA",
+      "Yamuna & Purvanchal expressway expertise",
+    ],
+    icon: Compass,
     href: "/services/outstation-cab",
-    bookHref: "/booking?serviceType=Outstation",
+    bookHref: "/booking?serviceType=Outstation+Trip+Driver",
     color: "bg-emerald-100 text-emerald-700",
   },
   {
-    id: "tours-car",
-    title: "Kanpur Sightseeing & Tours",
-    badge: "Curated Packages",
+    id: "monthly-chauffeur",
+    title: "Monthly Permanent Chauffeur",
+    badge: "Replacement Guarantee",
     description:
-      "Custom day trips and pilgrimage tours covering Bithoor Brahmavart Ghat, JK Temple, Allen Forest Zoo, Moti Jheel, Blue World, and Ayodhya Ram Mandir.",
-    features: ["Customizable itinerary", "Comfortable family vehicles", "Knowledgeable local chauffeurs"],
-    icon: Compass,
-    href: "/tours",
-    bookHref: "/booking?serviceType=Sightseeing+Tour",
+      "Dedicated, police-verified personal chauffeurs on 26-day monthly contracts for families, business owners, doctors, and senior citizens in Kanpur.",
+    features: [
+      "8h (₹15k), 10h (₹18k), 12h (₹21k) plans",
+      "Guaranteed backup if driver is on leave",
+      "Uniformed, courteous & background checked",
+    ],
+    icon: UserCheck,
+    href: "/services/corporate-car-rental",
+    bookHref: "/booking?serviceType=Monthly+Personal+Chauffeur",
     color: "bg-purple-100 text-purple-700",
   },
   {
-    id: "corporate-car",
-    title: "Corporate Car Rental",
-    badge: "B2B & Monthly Retainers",
+    id: "night-safe-drop",
+    title: "Late Night Party & Safe Drop",
+    badge: "24/7 Available",
     description:
-      "Dedicated corporate mobility solutions for Kanpur businesses, factories, visiting executives, client airport drops, and monthly employee transit.",
-    features: ["100% GST compliant invoicing", "Priority vehicle dispatch", "Dedicated account manager"],
+      "Attending a wedding, celebration, or late-night corporate dinner? Our verified driver arrives at your venue and drives you and your car safely back home.",
+    features: [
+      "Doorstep arrival at hotels & banquet halls",
+      "Zero alcohol tolerance & trusted safety",
+      "Flat transparent night tariffs",
+    ],
+    icon: Moon,
+    href: "/booking?serviceType=Night+Party+%26+Safe+Drop+Driver",
+    bookHref: "/booking?serviceType=Night+Party+%26+Safe+Drop+Driver",
+    color: "bg-slate-100 text-slate-800",
+  },
+  {
+    id: "corporate-retainer",
+    title: "Corporate Fleet Driver Retainers",
+    badge: "B2B & GST Billing",
+    description:
+      "Specialized chauffeur solutions for Kanpur businesses, factories, visiting VIPs, director personal cars, and executive transport with full GST tax invoicing.",
+    features: [
+      "100% GST compliant invoicing",
+      "Priority driver allocation",
+      "Dedicated account manager",
+    ],
     icon: Briefcase,
     href: "/services/corporate-car-rental",
-    bookHref: "/booking?serviceType=Corporate",
-    color: "bg-slate-100 text-slate-800",
+    bookHref: "/booking?serviceType=Corporate+Fleet+Driver+Retainer",
+    color: "bg-amber-100 text-amber-700",
   },
 ];
 
 const bikeServices = [
   {
-    id: "scooters",
-    title: "City Scooter Rental (Self-Drive)",
-    badge: "Most Popular in City",
+    id: "bike-rider-errand",
+    title: "City Scooter & Bike Rider",
+    badge: "Starts @ ₹199",
     description:
-      "Lightweight, automatic scooties like Honda Activa 6G and TVS Jupiter 125. Perfect for navigating congested city streets, coaching classes, and quick errands.",
-    features: ["Automatic gearless driving", "50+ km/l fuel efficiency", "Free sanitized ISI helmet"],
+      "Hire a verified rider to navigate your scooter or motorcycle for urgent city errands, bank tasks, picking up medicines, or shopping in congested Kanpur bazaars.",
+    features: [
+      "2h (₹199), 4h (₹349), 8h (₹599) packages",
+      "Automatic scooties & manual motorbikes",
+      "Prompt arrival in 30-45 mins",
+    ],
     icon: Bike,
-    href: "/bikes?category=Scooter",
-    bookHref: "/booking?serviceType=Bike+Rental&vehicle=Honda+Activa+6G",
+    href: "/services/bike-rental",
+    bookHref: "/booking?serviceType=Two-Wheeler+%26+Bike+Rider",
     color: "bg-orange-100 text-orange-700",
   },
   {
-    id: "commuter-bikes",
-    title: "Daily Commuter Motorcycles",
-    badge: "Maximum Mileage",
+    id: "safe-recovery-rider",
+    title: "Safe Home Recovery Rider",
+    badge: "Pillion Support",
     description:
-      "Ultra-economical bikes like Hero Splendor Plus and Honda Shine 125 for daily office commutes, site visits, and long city runs with up to 68 km/l mileage.",
-    features: ["Starting at just ₹399/day", "Low maintenance & smooth ride", "Easy Aadhaar & DL verification"],
-    icon: Bike,
-    href: "/bikes?category=Commuter",
-    bookHref: "/booking?serviceType=Bike+Rental&vehicle=Hero+Splendor+Plus",
-    color: "bg-amber-100 text-amber-700",
+      "Feeling exhausted after a long shift, unwell, or had an outpatient medical procedure? Our verified rider will ride your two-wheeler safely to your home with you as pillion.",
+    features: [
+      "100% verified commercial DL",
+      "Careful driving & traffic navigation",
+      "Reliable 24/7 Kanpur dispatch",
+    ],
+    icon: ShieldCheck,
+    href: "/services/bike-rental",
+    bookHref: "/booking?serviceType=Two-Wheeler+%26+Bike+Rider",
+    color: "bg-emerald-100 text-emerald-700",
   },
   {
-    id: "cruisers",
-    title: "Cruisers & Sports Highway Rides",
-    badge: "Weekend & Highway",
+    id: "parcel-pilot",
+    title: "Urgent Document & Parcel Pilot",
+    badge: "Time-Sensitive Deliveries",
     description:
-      "Iconic Royal Enfield Classic 350 and Bajaj Pulsar 150 for leisure rides along Ganga Barrage, weekend highway tours, and photography road trips.",
-    features: ["Thumping Royal Enfield engine", "Comfortable upright riding posture", "Clean paperwork & insurance"],
-    icon: Bike,
-    href: "/bikes?category=Cruiser",
-    bookHref: "/booking?serviceType=Bike+Rental&vehicle=Royal+Enfield+Classic+350",
-    color: "bg-red-100 text-red-700",
-  },
-  {
-    id: "student-packages",
-    title: "Student & Coaching Packages",
-    badge: "Kakadeo & IIT Hubs",
-    description:
-      "Special discounted hourly, daily, and weekly two-wheeler rental passes for students attending Kakadeo coaching institutes, IIT Kanpur, or university exams.",
-    features: ["Flexible pickup hubs across Kanpur", "Zero surge pricing during exam season", "Instant digital paperwork"],
+      "Need important legal papers, keys, or lab reports picked up or delivered across Kanpur without leaving your home or office? Hire a dedicated two-wheeler pilot.",
+    features: [
+      "Fast point-to-point courier transit",
+      "Live phone & WhatsApp updates",
+      "Doorstep delivery confirmation",
+    ],
     icon: Clock,
     href: "/services/bike-rental",
-    bookHref: "/booking?serviceType=Bike+Rental",
-    color: "bg-cyan-100 text-cyan-700",
+    bookHref: "/booking?serviceType=Two-Wheeler+%26+Bike+Rider",
+    color: "bg-blue-100 text-blue-700",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main>
       <PageHero
-        title="Our Vehicle Rental Services"
-        subtitle="Organized Car & Bike Mobility Solutions in Kanpur"
+        title="Our Driver & Rider Services"
+        subtitle="Hire verified, professional chauffeurs for your car and on-demand riders for your two-wheeler in Kanpur"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
         ]}
       />
 
-      {/* Navigation Jump Bar */}
-      <div className="bg-white border-b border-slate-200 py-4 sticky top-[72px] z-30 shadow-sm">
-        <div className="container mx-auto px-4 flex flex-wrap justify-between items-center gap-4">
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-            <span>Browse by Category:</span>
-            <a href="#car-services" className="bg-blue-50 text-blue-800 hover:bg-blue-100 px-3 py-1 rounded-full transition-colors">
-              Car Services
-            </a>
-            <a href="#bike-services" className="bg-orange-50 text-accent-700 hover:bg-orange-100 px-3 py-1 rounded-full transition-colors">
-              Bike Services
-            </a>
-          </div>
-          <Link
-            href="/pricing"
-            className="text-xs font-bold text-primary-900 hover:text-accent-600 inline-flex items-center gap-1"
-          >
-            <span>View Complete Price Chart</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+      {/* Trust Banner */}
+      <section className="bg-primary-900 text-white py-4 border-b border-primary-800">
+        <div className="container mx-auto px-4 flex flex-wrap justify-center items-center gap-6 sm:gap-12 text-xs sm:text-sm">
+          <span className="flex items-center gap-1.5 font-medium">
+            <ShieldCheck className="w-4 h-4 text-accent-400" /> 100% Police & DL Verified
+          </span>
+          <span className="flex items-center gap-1.5 font-medium">
+            <Clock className="w-4 h-4 text-accent-400" /> 45-Min Doorstep Arrival
+          </span>
+          <span className="flex items-center gap-1.5 font-medium">
+            <Sparkles className="w-4 h-4 text-accent-400" /> Manual & Automatic Experts
+          </span>
         </div>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 py-16 space-y-20">
-        
-        {/* Category 1: Car Rental Services */}
-        <section id="car-services" className="scroll-mt-32">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
-            <div>
-              <span className="text-blue-800 font-bold uppercase tracking-wider text-xs block mb-1">
-                Category 1: Chauffeured Fleet
-              </span>
-              <h2 className="text-3xl font-extrabold text-slate-900">
-                Car Rental Services in Kanpur
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base mt-1">
-                Punctual, chauffeured hatchbacks, sedans, SUVs, and luxury passenger vehicles.
-              </p>
-            </div>
-            <Link
-              href="/cars"
-              className="inline-flex items-center gap-2 bg-primary-900 hover:bg-primary-950 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-colors shadow-sm self-start md:self-auto"
-            >
-              <span>View All 8 Car Models</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+      {/* SECTION 1: CAR DRIVER SERVICES */}
+      <section className="py-16 bg-white" id="car-driver-services">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mb-12">
+            <span className="text-primary-800 font-bold uppercase tracking-wider text-xs">
+              Category 1: Personal Car Chauffeurs
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1 mb-3">
+              Car Driver Services (In Your Personal Car)
+            </h2>
+            <p className="text-slate-600 text-base">
+              Avoid traffic fatigue and parking hassles. Our experienced chauffeurs drive your manual or automatic car safely across Kanpur or on outstation highways.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {carServices.map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-5">
-                      <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center group-hover:scale-105 transition-transform`}>
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <span className="text-[11px] font-bold bg-slate-100 text-slate-700 px-3 py-1 rounded-full border border-slate-200">
-                        {service.badge}
-                      </span>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${service.color}`}>
+                      <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-5">
-                      {service.description}
-                    </p>
-                    <div className="space-y-2 mb-6 bg-slate-50 p-4 rounded-xl">
-                      {service.features.map((feat, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <span className="text-[11px] font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-full border border-slate-200">
+                      {service.badge}
+                    </span>
                   </div>
 
-                  <div className="flex gap-3 pt-3 border-t border-slate-100">
+                  <h3 className="font-bold text-lg text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2 mb-6 border-t border-slate-100 pt-4">
+                    {service.features.map((feat, idx) => (
+                      <li key={idx} className="text-xs text-slate-600 flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
                     <Link
                       href={service.href}
-                      className="flex-1 text-center py-2.5 border border-slate-300 hover:border-primary-900 text-slate-700 font-bold rounded-xl text-xs transition-colors"
+                      className="text-xs font-bold text-slate-700 hover:text-primary-900 py-2 flex items-center gap-1"
                     >
-                      View Details
+                      Details <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                     <Link
                       href={service.bookHref}
-                      className="flex-1 text-center py-2.5 bg-primary-900 hover:bg-primary-950 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
+                      className="ml-auto px-4 py-2 bg-primary-900 hover:bg-primary-950 text-white rounded-lg text-xs font-bold transition-colors"
                     >
-                      Book Cab
+                      Hire Driver
                     </Link>
                   </div>
                 </div>
               );
             })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Category 2: Bike & Scooter Rental Services */}
-        <section id="bike-services" className="scroll-mt-32">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-slate-200 gap-4">
-            <div>
-              <span className="text-accent-600 font-bold uppercase tracking-wider text-xs block mb-1">
-                Category 2: Self-Drive Fleet
-              </span>
-              <h2 className="text-3xl font-extrabold text-slate-900">
-                Bike & Scooter Rental Services in Kanpur
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base mt-1">
-                Economical, traffic-beating two-wheelers with complimentary sanitized helmet and quick verification.
-              </p>
-            </div>
-            <Link
-              href="/bikes"
-              className="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-colors shadow-sm self-start md:self-auto"
-            >
-              <span>View All 8 Bike Models</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+      {/* SECTION 2: BIKE RIDER SERVICES */}
+      <section className="py-16 bg-slate-50 border-t border-slate-200" id="bike-rider-services">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mb-12">
+            <span className="text-accent-600 font-bold uppercase tracking-wider text-xs">
+              Category 2: On-Demand Two-Wheeler Riders
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1 mb-3">
+              Two-Wheeler & Bike Rider Services
+            </h2>
+            <p className="text-slate-600 text-base">
+              Need a verified pilot for your scooter or motorbike? Hire trained riders for quick city errands, urgent deliveries, or safe recovery home.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {bikeServices.map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.id}
-                  className="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div>
-                    <div className="flex justify-between items-start mb-5">
-                      <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center group-hover:scale-105 transition-transform`}>
-                        <Icon className="w-7 h-7" />
-                      </div>
-                      <span className="text-[11px] font-bold bg-orange-50 text-accent-700 px-3 py-1 rounded-full border border-orange-200">
-                        {service.badge}
-                      </span>
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${service.color}`}>
+                      <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-5">
-                      {service.description}
-                    </p>
-                    <div className="space-y-2 mb-6 bg-orange-50/50 p-4 rounded-xl border border-orange-100">
-                      {service.features.map((feat, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-orange-600 flex-shrink-0" />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <span className="text-[11px] font-bold bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full border border-orange-200">
+                      {service.badge}
+                    </span>
                   </div>
 
-                  <div className="flex gap-3 pt-3 border-t border-slate-100">
+                  <h3 className="font-bold text-lg text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mb-5 leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2 mb-6 border-t border-slate-100 pt-4">
+                    {service.features.map((feat, idx) => (
+                      <li key={idx} className="text-xs text-slate-600 flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
                     <Link
                       href={service.href}
-                      className="flex-1 text-center py-2.5 border border-slate-300 hover:border-accent-600 text-slate-700 font-bold rounded-xl text-xs transition-colors"
+                      className="text-xs font-bold text-slate-700 hover:text-accent-600 py-2 flex items-center gap-1"
                     >
-                      View Models
+                      Details <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                     <Link
                       href={service.bookHref}
-                      className="flex-1 text-center py-2.5 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl text-xs transition-colors shadow-sm"
+                      className="ml-auto px-4 py-2 bg-accent-500 hover:bg-accent-600 text-white rounded-lg text-xs font-bold transition-colors"
                     >
-                      Book Bike
+                      Hire Rider
                     </Link>
                   </div>
                 </div>
               );
             })}
           </div>
-        </section>
-
-      </div>
+        </div>
+      </section>
     </main>
   );
 }

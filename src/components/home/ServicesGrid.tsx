@@ -1,48 +1,48 @@
 import React from 'react'
 import Link from 'next/link'
-import { CarFront, Map, Bike, MapPin, Briefcase, Calculator, ArrowRight } from 'lucide-react'
+import { UserCheck, Compass, Bike, Moon, Briefcase, Calculator, ArrowRight, ShieldCheck } from 'lucide-react'
 
 export default function ServicesGrid() {
   const services = [
     {
-      icon: CarFront,
-      title: 'Local Car Rental',
-      description: 'Hourly car rentals (4h, 8h & 12h) with professional chauffeur for city errands, shopping & family visits.',
+      icon: UserCheck,
+      title: 'Local Hourly Car Driver',
+      description: 'Hire verified chauffeurs for 4h, 8h, or 12h duty to drive your own car for shopping in Naveen Market, meetings, family events, or hospital visits.',
       link: '/services/local-car-rental',
-      badge: 'Chauffeured',
+      badge: 'Starting ₹400',
+    },
+    {
+      icon: Compass,
+      title: 'Outstation Highway Driver',
+      description: 'Experienced, highway-tested drivers for your personal car for one-way drops or multi-day trips to Lucknow, Agra, Ayodhya, Varanasi & Delhi.',
+      link: '/services/outstation-cab',
+      badge: 'Same-Day & Stay',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Monthly Permanent Driver',
+      description: 'Dedicated full-time chauffeurs for families, doctors, executives & senior citizens. Police verified, 26 days/month, with free replacements.',
+      link: '/services/corporate-car-rental',
+      badge: 'Permanent Hire',
     },
     {
       icon: Bike,
-      title: 'Bike & Scooter Rental',
-      description: 'Affordable self-drive two-wheeler hire. Activa, Jupiter, Splendor, Pulsar & Royal Enfield Bullet with helmet included.',
+      title: 'Two-Wheeler & Bike Rider',
+      description: 'On-demand riders to pilot your scooter or motorcycle, navigate tight traffic, run city errands, or deliver important documents safely.',
       link: '/services/bike-rental',
-      badge: 'Self Drive',
+      badge: 'Starting ₹199',
     },
     {
-      icon: Map,
-      title: 'Outstation Cabs',
-      description: 'Comfortable one-way drops and round-trip cabs from Kanpur to Lucknow, Agra, Ayodhya, Varanasi & Delhi.',
-      link: '/services/outstation-cab',
-      badge: 'One Way / Round',
-    },
-    {
-      icon: MapPin,
-      title: 'Sightseeing Tours',
-      description: 'Custom sightseeing packages for Bithoor Pilgrimage, JK Temple, Allen Forest Zoo, and holy Ganga Ghats.',
-      link: '/tours',
-      badge: 'Full & Half Day',
-    },
-    {
-      icon: Briefcase,
-      title: 'Corporate Travel',
-      description: 'Dedicated business mobility solutions for Kanpur MSMEs and corporate offices with GST compliant invoicing.',
-      link: '/services/corporate-car-rental',
-      badge: 'B2B & Monthly',
+      icon: Moon,
+      title: 'Night Party & Safe Drop',
+      description: 'Avoid late-night driving fatigue or DUI risks. Book a professional chauffeur to drive you and your family safely home in your own vehicle.',
+      link: '/booking?serviceType=Night+Safe+Drop+Driver',
+      badge: '24/7 Available',
     },
     {
       icon: Calculator,
-      title: 'Transparent Tariffs',
-      description: 'Upfront rates for cars and bikes. Zero surge pricing, clear night allowances, and honest per-km billing.',
+      title: 'Transparent Driver Tariffs',
+      description: 'Clear, upfront driver charges. No hidden commissions, transparent night allowances, and affordable hourly rates inspired by standard tariffs.',
       link: '/pricing',
       badge: 'Zero Hidden Fees',
     },
@@ -53,13 +53,13 @@ export default function ServicesGrid() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-accent-600 font-bold uppercase tracking-wider text-xs mb-2">
-            Tailored For Kanpur Travel
+            Professional Chauffeur Solutions
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Our Core Rental & Tourism Services
+            Our Core Driver & Rider Services in Kanpur
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Choose from chauffeured car packages, self-drive bikes, outstation routes, and curated local Kanpur tour packages.
+            Your vehicle, our verified drivers. Enjoy stress-free travel, eliminate parking worries, and let seasoned professionals handle Kanpur traffic.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function ServicesGrid() {
                 href={service.link}
                 className="inline-flex items-center text-primary-800 font-bold text-sm hover:text-accent-600 transition-colors"
               >
-                <span>View Details & Rates</span>
+                <span>View Rates & Driver Details</span>
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

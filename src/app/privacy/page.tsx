@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | KanpurCabs",
+  title: "Privacy Policy | KanpurDrivers",
   description:
     "Privacy policy explaining how we collect, use, and protect your personal data.",
 };
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <h2>1. Introduction</h2>
           <p>
-            At KanpurCabs, we value your privacy and are committed to protecting
+            At KanpurDrivers, we value your privacy and are committed to protecting
             your personal data. This Privacy Policy explains how we collect,
             use, disclose, and safeguard your information when you visit our
             website or use our services.
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
             data practices, please contact us at:
           </p>
           <ul>
-            <li>Email: privacy@kanpurcabs.com</li>
+            <li>Email: privacy@kanpurdrivers.com</li>
             <li>Phone: +91 98765 43210</li>
             <li>Address: 123, Civil Lines, Kanpur, Uttar Pradesh 208001</li>
           </ul>

@@ -25,7 +25,7 @@ export default function Breadcrumbs({
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: item.href ? `https://kanpurcabs.com${item.href}` : undefined,
+      item: item.href ? `https://kanpurdrivers.com${item.href}` : undefined,
     })),
   };
 

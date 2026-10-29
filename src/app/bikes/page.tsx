@@ -2,285 +2,205 @@
 
 import { useState } from "react";
 import PageHero from "@/components/ui/PageHero";
-import { Bike, Shield, Zap, CheckCircle2, PhoneCall, Sparkles } from "lucide-react";
+import { Bike, ShieldCheck, Zap, CheckCircle2, PhoneCall, Sparkles, ArrowRight, Clock } from "lucide-react";
 import Link from "next/link";
 import { SITE_CONFIG, getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 
 const BIKES = [
   {
     id: 1,
-    name: "Honda Activa 6G",
+    name: "Scooter & Moped Pilots (Activa 6G, Access)",
     category: "Scooter",
-    priceHourly: 50,
-    priceDaily: 400,
-    mileage: "45-50 km/l",
-    engine: "109.5 cc",
-    fuel: "Petrol",
-    transmission: "Automatic",
-    deposit: 1000,
-    badge: "Most Rented in Kanpur",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
+    transmission: "Automatic Gearless",
+    specialty: "Market shopping in Naveen Market / Gumti No. 5, medicine pickups, banking tasks.",
+    badge: "Quick City Pilot",
     imageUrl: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 2,
-    name: "TVS Jupiter 125",
+    name: "Comfort Scooter Pilots (TVS Jupiter, Ntorq)",
     category: "Scooter",
-    priceHourly: 55,
-    priceDaily: 450,
-    mileage: "48-52 km/l",
-    engine: "124.8 cc",
-    fuel: "Petrol",
-    transmission: "Automatic",
-    deposit: 1000,
-    badge: "Comfort Ride",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
+    transmission: "Automatic Gearless",
+    specialty: "Comfortable family errand rides, school pickups, patient assistance on pillion.",
+    badge: "High Comfort",
     imageUrl: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 3,
-    name: "Hero Splendor Plus",
+    name: "Commuter Motorcycle Riders (Splendor Plus, Platina)",
     category: "Commuter",
-    priceHourly: 50,
-    priceDaily: 400,
-    mileage: "65-70 km/l",
-    engine: "97.2 cc",
-    fuel: "Petrol",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
     transmission: "4-Speed Manual",
-    deposit: 1000,
-    badge: "Best Fuel Economy",
+    specialty: "High mileage city running, office document drops, daily field transit.",
+    badge: "Reliable Commuter",
     imageUrl: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 4,
-    name: "Honda Shine 125",
+    name: "City Motorcycle Pilots (Honda Shine, Passion)",
     category: "Commuter",
-    priceHourly: 60,
-    priceDaily: 500,
-    mileage: "55-60 km/l",
-    engine: "123.9 cc",
-    fuel: "Petrol",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
     transmission: "5-Speed Manual",
-    deposit: 1000,
-    badge: "Smooth Highway Commute",
+    specialty: "Smooth clutch handling, punctual transit across town, client sample delivery.",
+    badge: "Smooth Transit",
     imageUrl: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 5,
-    name: "Bajaj Pulsar 150",
+    name: "Sports & Urgent Courier Pilots (Pulsar, Apache)",
     category: "Sports",
-    priceHourly: 80,
-    priceDaily: 650,
-    mileage: "42-45 km/l",
-    engine: "149.5 cc",
-    fuel: "Petrol",
-    transmission: "5-Speed Manual",
-    deposit: 1500,
-    badge: "Youth & College Favorite",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
+    transmission: "Manual 5/6-Speed",
+    specialty: "Time-critical delivery, urgent legal document pilot, safe night recovery rider.",
+    badge: "Fast & Safe Pilot",
     imageUrl: "https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 6,
-    name: "TVS Apache RTR 160",
-    category: "Sports",
-    priceHourly: 85,
-    priceDaily: 700,
-    mileage: "40-45 km/l",
-    engine: "159.7 cc",
-    fuel: "Petrol",
-    transmission: "5-Speed Manual",
-    deposit: 1500,
-    badge: "High Performance",
-    imageUrl: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 7,
-    name: "Royal Enfield Classic 350",
+    name: "Cruiser Motorcycle Pilots (Royal Enfield Classic 350)",
     category: "Cruiser",
-    priceHourly: 140,
-    priceDaily: 1100,
-    mileage: "32-35 km/l",
-    engine: "349 cc",
-    fuel: "Petrol",
-    transmission: "5-Speed Manual",
-    deposit: 2500,
-    badge: "Iconic Bullet Sound",
+    duty2h: "₹199 (2h)",
+    duty4h: "₹349 (4h)",
+    duty8h: "₹599 (8h)",
+    tariffDisplay: "From ₹199 (2 Hours)",
+    transmission: "Heavy Thumper Manual",
+    specialty: "Experienced handling of heavy cruisers, highway escort, safe rider for long tours.",
+    badge: "Cruiser Specialist",
     imageUrl: "https://images.unsplash.com/photo-1558981420-87aa9dad1c89?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 8,
-    name: "Royal Enfield Hunter 350",
-    category: "Cruiser",
-    priceHourly: 130,
-    priceDaily: 1050,
-    mileage: "35-37 km/l",
-    engine: "349 cc",
-    fuel: "Petrol",
-    transmission: "5-Speed Manual",
-    deposit: 2500,
-    badge: "Modern Urban Cruiser",
-    imageUrl: "https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
 const CATEGORIES = ["All", "Scooter", "Commuter", "Sports", "Cruiser"];
 
 export default function BikesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredBikes =
-    selectedCategory === "All"
-      ? BIKES
-      : BIKES.filter((b) => b.category === selectedCategory);
+  const filteredBikes = BIKES.filter((bike) => {
+    if (activeCategory === "All") return true;
+    return bike.category === activeCategory;
+  });
 
   return (
-    <main>
+    <div className="min-h-screen bg-slate-50 pb-16">
       <PageHero
-        title="Bike & Scooter Rental in Kanpur"
-        subtitle="Explore our certified two-wheelers for easy, traffic-free travel across Kanpur"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Bike Rentals" }]}
+        title="Hire On-Demand Two-Wheeler Riders"
+        subtitle="Professional, background-verified riders for your personal scooter or motorcycle across Kanpur — Doorstep arrival in 30-45 minutes"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Bike Riders", href: "/bikes" },
+        ]}
       />
 
-      <section className="py-12 md:py-16 container mx-auto px-4">
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-full font-bold text-sm transition-all border ${
-                selectedCategory === cat
-                  ? "bg-accent-500 text-white border-accent-500 shadow-md"
-                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              {cat} {cat === "All" ? `(${BIKES.length})` : ""}
-            </button>
-          ))}
+      <div className="container mx-auto px-4 mt-12">
+        {/* Category Filter Pills */}
+        <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4 mb-8">
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                  activeCategory === cat
+                    ? "bg-accent-500 text-white shadow-sm"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                {cat} Riders
+              </button>
+            ))}
+          </div>
+          <span className="text-xs text-slate-500 font-medium">
+            Showing {filteredBikes.length} rider categories
+          </span>
         </div>
 
-        {/* Bike Grid with Real Photography */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Riders Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBikes.map((bike) => (
             <div
               key={bike.id}
-              className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group"
+              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
             >
-              <div className="h-52 relative overflow-hidden bg-slate-100">
+              <div className="relative h-48 bg-slate-100 overflow-hidden group">
                 <img
                   src={bike.imageUrl}
                   alt={bike.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-white/95 backdrop-blur-sm text-slate-800 text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">
-                    {bike.category}
-                  </span>
+                <div className="absolute top-3 left-3 bg-accent-600 text-white text-xs px-2.5 py-1 rounded-md font-semibold">
+                  {bike.badge}
                 </div>
-                <div className="absolute top-3 right-3">
-                  <span className="bg-primary-900/90 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
-                    {bike.badge}
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 text-white">
-                  <span className="text-xs font-bold uppercase tracking-wider block drop-shadow-md">
-                    Self Drive • Helmet Included
-                  </span>
+                <div className="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2 py-0.5 rounded-md font-bold flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" /> 100% DL Verified
                 </div>
               </div>
 
-              <div className="p-5 flex-1 flex flex-col">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-slate-900">{bike.name}</h3>
-                </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="font-bold text-slate-900 text-base mb-2">{bike.name}</h3>
 
-                <div className="grid grid-cols-2 gap-2 my-3 py-2.5 bg-slate-50 rounded-xl px-3 border border-slate-100 text-xs text-slate-600">
+                <p className="text-xs text-slate-600 mb-4 leading-relaxed flex-grow">
+                  {bike.specialty}
+                </p>
+
+                <div className="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl mb-5 border border-slate-100 flex justify-between">
                   <div>
-                    <span className="text-slate-400 block text-[10px] uppercase font-semibold">Daily Rate</span>
-                    <strong className="text-base text-accent-600 font-extrabold">₹{bike.priceDaily}</strong>
-                    <span className="text-[10px] text-slate-500">/day</span>
+                    <span className="text-slate-400 block text-[10px]">Transmission</span>
+                    <strong className="text-slate-800 text-[11px]">{bike.transmission}</strong>
                   </div>
+                  <div className="text-right">
+                    <span className="text-slate-400 block text-[10px]">Overtime Rate</span>
+                    <strong className="text-slate-800 text-[11px]">₹50 / hr</strong>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <span className="text-slate-400 block text-[10px] uppercase font-semibold">Hourly Rate</span>
-                    <strong className="text-base text-primary-900 font-extrabold">₹{bike.priceHourly}</strong>
-                    <span className="text-[10px] text-slate-500">/hr</span>
+                    <span className="text-slate-400 text-[10px] block">Rider Duty Tariff</span>
+                    <strong className="text-accent-600 font-extrabold text-sm">{bike.tariffDisplay}</strong>
                   </div>
-                </div>
-
-                <div className="space-y-1.5 text-xs text-slate-600 mb-5">
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Mileage:</span>
-                    <span className="font-semibold">{bike.mileage}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Engine:</span>
-                    <span className="font-semibold">{bike.engine}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Transmission:</span>
-                    <span className="font-semibold">{bike.transmission}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Refundable Deposit:</span>
-                    <span className="font-semibold text-emerald-600">₹{bike.deposit}</span>
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-3 border-t border-slate-100 flex gap-2">
                   <Link
-                    href={`/booking?serviceType=Bike+Rental&vehicle=${encodeURIComponent(bike.name)}`}
-                    className="flex-1 text-center bg-accent-500 hover:bg-accent-600 text-white font-bold py-2.5 rounded-xl text-xs transition-colors shadow-sm"
+                    href={`/booking?serviceType=Two-Wheeler+%26+Bike+Rider&vehicle=${encodeURIComponent(bike.name)}`}
+                    className="px-4 py-2 bg-accent-500 hover:bg-accent-600 text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow"
                   >
-                    Book Now
+                    Hire Rider <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                  <a
-                    href={getWhatsAppLink(`Hi KanpurCabs, I want to rent ${bike.name} on self-drive basis in Kanpur.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 border border-slate-200 hover:border-emerald-500 text-emerald-600 rounded-xl transition-colors flex items-center justify-center"
-                    title="WhatsApp Enquiry"
-                  >
-                    <PhoneCall className="w-4 h-4" />
-                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Benefits banner */}
-        <div className="mt-16 bg-gradient-to-r from-primary-900 to-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-accent-500/20 text-accent-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Shield className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Free Sanitized ISI Helmet</h4>
-                <p className="text-slate-300 text-xs sm:text-sm">Complimentary helmet provided with every scooter & motorcycle rental.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-accent-500/20 text-accent-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Zap className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Instant Paperless Verification</h4>
-                <p className="text-slate-300 text-xs sm:text-sm">Just show your original Driving License & Aadhaar card. Collect your bike in 5 minutes.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-accent-500/20 text-accent-400 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-1">Multiple Kanpur Hubs</h4>
-                <p className="text-slate-300 text-xs sm:text-sm">Pickup and drop points at Civil Lines, Kakadeo (Coaching Nagar), Swaroop Nagar, and IIT Kanpur.</p>
-              </div>
-            </div>
+        {/* Customer Two-Wheeler Policy */}
+        <div className="mt-12 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+            <span>
+              <strong>Customer Two-Wheeler Policy:</strong> Rider services are performed on the two-wheeler provided by the customer. All riders strictly adhere to helmet and traffic rules.
+            </span>
           </div>
+          <Link href="/pricing" className="text-accent-600 font-bold hover:underline whitespace-nowrap">
+            View Complete Rate Chart &rarr;
+          </Link>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }

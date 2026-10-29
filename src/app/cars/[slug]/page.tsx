@@ -205,11 +205,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const car = CARS_DATA.find((c) => c.slug === slug);
-  if (!car) return { title: "Car Not Found" };
+  if (!car) return { title: "Driver Category Not Found" };
 
   return {
-    title: `${car.name} Rental in Kanpur | KanpurCabs`,
-    description: `Rent a ${car.name} in Kanpur. Perfect ${car.category} with ${car.seats} seats. Book now starting at ₹${car.price}/km.`,
+    title: `Verified Drivers for ${car.name} in Kanpur | KanpurDrivers`,
+    description: `Hire experienced, background-checked chauffeurs for your personal ${car.name} in Kanpur. Local hourly from ₹400 (4h), outstation ₹1,000/day, and monthly chauffeurs.`,
   };
 }
 
@@ -358,91 +358,58 @@ export default async function CarDetailPage({
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Pricing Card */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 mb-4">
-                Pricing Details
+                Driver Duty Tariffs
               </h3>
               <div className="flex items-end mb-6 border-b border-slate-100 pb-4">
-                <span className="text-4xl font-bold text-orange-500">
-                  ₹{car.price}
+                <span className="text-4xl font-extrabold text-primary-900">
+                  ₹400
                 </span>
-                <span className="text-slate-500 font-medium ml-2 mb-1">
-                  / km
+                <span className="text-slate-500 font-medium ml-2 mb-1 text-xs">
+                  / 4 Hours Local Duty
                 </span>
               </div>
-              <div className="space-y-3 mb-6 text-sm">
+              <div className="space-y-3 mb-6 text-xs text-slate-700">
                 <div className="flex justify-between">
-                  <span className="text-slate-600">
-                    Minimum Charge (250 km)
-                  </span>
-                  <span className="font-semibold text-slate-900">
-                    ₹{car.minCharge}
-                  </span>
+                  <span className="text-slate-600">8 Hours Full Day Duty</span>
+                  <span className="font-bold text-slate-900">₹700</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Driver Allowance / Day</span>
-                  <span className="font-semibold text-slate-900">
-                    ₹{car.driverAllowance}
-                  </span>
+                  <span className="text-slate-600">12 Hours Extended Duty</span>
+                  <span className="font-bold text-slate-900">₹950</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Night Halt Charges</span>
-                  <span className="font-semibold text-slate-900">
-                    ₹{car.nightCharge}
-                  </span>
+                  <span className="text-slate-600">Outstation Return</span>
+                  <span className="font-bold text-primary-900">₹1,000 / day + DA</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Monthly Chauffeur (26 Days)</span>
+                  <span className="font-bold text-slate-900">₹15,000 / month</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-600">Night Surcharge (10 PM - 6 AM)</span>
+                  <span className="font-semibold text-slate-900">₹200</span>
                 </div>
               </div>
-              <div className="bg-blue-50 p-4 rounded-xl text-sm text-blue-900">
-                Toll, Parking, and State Taxes are extra as applicable.
+              <div className="bg-slate-50 p-3.5 rounded-xl text-xs text-slate-600 border border-slate-100 mb-6">
+                <strong>Customer Car Notice:</strong> Driver drives your vehicle. Fuel, tolls & parking paid by customer.
               </div>
-            </div>
 
-            {/* Quick Form */}
-            <div className="bg-blue-900 p-6 rounded-2xl text-white">
-              <h3 className="text-xl font-bold mb-4">Quick Booking</h3>
-              <form className="space-y-4">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 placeholder:text-blue-200"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 placeholder:text-blue-200"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Pickup Location"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 placeholder:text-blue-200"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="date"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 text-white"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="w-full py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-colors"
-                >
-                  Send Request
-                </button>
-              </form>
+              <Link
+                href={`/booking?serviceType=Local+Hourly+Car+Driver&vehicle=${encodeURIComponent(car.name)}`}
+                className="w-full py-3 bg-primary-900 hover:bg-primary-950 text-white font-bold rounded-xl text-center block text-xs transition-colors shadow-md"
+              >
+                Hire Driver for {car.name}
+              </Link>
             </div>
 
             <a
               href="tel:+919876543210"
-              className="flex items-center justify-center p-4 bg-white border border-slate-200 rounded-2xl text-slate-900 font-bold hover:bg-slate-50 transition-colors"
+              className="flex items-center justify-center p-4 bg-white border border-slate-200 rounded-2xl text-slate-900 font-bold hover:bg-slate-50 transition-colors text-xs"
             >
-              <Phone className="w-5 h-5 mr-2 text-blue-800" />
-              Call to Book: +91 98765 43210
+              <Phone className="w-4 h-4 mr-2 text-primary-800" />
+              Call Dispatch: +91 98765 43210
             </a>
           </div>
         </div>

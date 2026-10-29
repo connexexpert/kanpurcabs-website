@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Phone, Mail, Clock, Menu, X, ChevronDown, Car, Bike } from "lucide-react";
+import { Phone, Mail, Clock, Menu, X, ChevronDown, UserCheck, ShieldCheck, Bike, Car } from "lucide-react";
 import { SITE_CONFIG, getPhoneLink, cn } from "@/lib/utils";
 
 export default function Header() {
@@ -34,8 +34,8 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center hidden md:flex text-slate-300 text-xs">
-            <Clock className="w-3.5 h-3.5 mr-1.5 text-accent-400" />
-            24/7 Car & Bike Rentals across Kanpur
+            <ShieldCheck className="w-3.5 h-3.5 mr-1.5 text-accent-400" />
+            24/7 Verified Drivers for Your Car & Bike in Kanpur
           </div>
         </div>
       </div>
@@ -46,14 +46,14 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 text-primary-900">
             <div className="bg-primary-900 text-accent-400 p-2 rounded-xl flex items-center justify-center">
-              <Car className="w-6 h-6" />
+              <UserCheck className="w-6 h-6" />
             </div>
             <div>
               <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-primary-900 block leading-none">
-                Kanpur<span className="text-accent-600">Cabs</span>
+                Kanpur<span className="text-accent-600">Drivers</span>
               </span>
               <span className="text-[10px] text-slate-500 tracking-wider font-semibold uppercase block mt-0.5">
-                Cars & Bikes on Rent
+                Verified Drivers & Riders
               </span>
             </div>
           </Link>
@@ -66,71 +66,71 @@ export default function Header() {
               Price Chart
             </Link>
 
-            {/* Car Services & Fleet Dropdown */}
+            {/* Car Drivers Dropdown */}
             <div className="relative group cursor-pointer py-2">
               <div className="flex items-center hover:text-accent-600 transition-colors">
                 <Link href="/cars" className="font-semibold">Car</Link>
                 <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
               </div>
-              <div className="absolute top-full left-0 bg-white shadow-xl rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all w-64 border border-slate-100 p-2 z-50">
+              <div className="absolute top-full left-0 bg-white shadow-xl rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all w-72 border border-slate-100 p-2 z-50">
                 <Link href="/cars" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900 border-b border-slate-100 mb-1">
                   <div className="font-bold text-primary-900 flex items-center justify-between">
-                    <span>View Cars Fleet</span>
-                    <span className="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold">All Cars</span>
+                    <span>Drivers by Car Type</span>
+                    <span className="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded font-bold">Manual & Auto</span>
                   </div>
-                  <div className="text-xs text-slate-400 font-normal">Hatchbacks, Sedans, SUVs & Travellers</div>
+                  <div className="text-xs text-slate-400 font-normal">Hatchback, Sedan, SUV, Luxury & Travellers</div>
                 </Link>
                 <Link href="/services/local-car-rental" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Local Car Rental</div>
-                  <div className="text-xs text-slate-400 font-normal">Hourly 4h, 8h & 12h in city</div>
+                  <div className="font-bold">Local Hourly Car Driver</div>
+                  <div className="text-xs text-slate-400 font-normal">4h, 8h & 12h for shopping, meetings, hospitals</div>
                 </Link>
                 <Link href="/services/outstation-cab" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Outstation Cabs</div>
-                  <div className="text-xs text-slate-400 font-normal">One-Way & Round Trips from Kanpur</div>
-                </Link>
-                <Link href="/tours" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Kanpur Sightseeing & Tours</div>
-                  <div className="text-xs text-slate-400 font-normal">Bithoor, Ayodhya, Varanasi Packages</div>
+                  <div className="font-bold">Outstation Highway Driver</div>
+                  <div className="text-xs text-slate-400 font-normal">Experienced drivers for Lucknow, Agra, Delhi, Ayodhya</div>
                 </Link>
                 <Link href="/services/corporate-car-rental" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Corporate Car Rental</div>
-                  <div className="text-xs text-slate-400 font-normal">Monthly Retainers & GST Billing</div>
+                  <div className="font-bold">Monthly / Permanent Driver</div>
+                  <div className="text-xs text-slate-400 font-normal">Dedicated full-time private chauffeurs & corporate fleet</div>
+                </Link>
+                <Link href="/tours" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
+                  <div className="font-bold">City & Pilgrimage Tour Driver</div>
+                  <div className="text-xs text-slate-400 font-normal">Chauffeur for Bithoor, JK Temple, Ram Mandir</div>
                 </Link>
               </div>
             </div>
 
-            {/* Bike Services & Fleet Dropdown */}
+            {/* Bike Riders Dropdown */}
             <div className="relative group cursor-pointer py-2">
               <div className="flex items-center hover:text-accent-600 transition-colors">
                 <Link href="/bikes" className="font-semibold flex items-center gap-1">
                   <span>Bike</span>
-                  <span className="bg-orange-100 text-accent-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">New</span>
+                  <span className="bg-orange-100 text-accent-700 text-[10px] font-bold px-1.5 py-0.5 rounded-full">Riders</span>
                 </Link>
                 <ChevronDown className="w-4 h-4 ml-1 opacity-70 group-hover:rotate-180 transition-transform" />
               </div>
-              <div className="absolute top-full left-0 bg-white shadow-xl rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all w-64 border border-slate-100 p-2 z-50">
+              <div className="absolute top-full left-0 bg-white shadow-xl rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all w-72 border border-slate-100 p-2 z-50">
                 <Link href="/bikes" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900 border-b border-slate-100 mb-1">
                   <div className="font-bold text-accent-600 flex items-center justify-between">
-                    <span>View Bikes Fleet</span>
-                    <span className="text-[10px] bg-orange-50 text-accent-600 px-1.5 py-0.5 rounded font-bold">Self Drive</span>
+                    <span>Two-Wheeler Riders Network</span>
+                    <span className="text-[10px] bg-orange-50 text-accent-600 px-1.5 py-0.5 rounded font-bold">On Demand</span>
                   </div>
-                  <div className="text-xs text-slate-400 font-normal">Scooters, Commuters, Sports & Cruisers</div>
+                  <div className="text-xs text-slate-400 font-normal">Scooters, Commuters, Sports & Royal Enfield</div>
                 </Link>
                 <Link href="/services/bike-rental" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Bike & Scooter Rental Service</div>
-                  <div className="text-xs text-slate-400 font-normal">Hourly, 24h & weekly packages</div>
+                  <div className="font-bold">Two-Wheeler Rider Service</div>
+                  <div className="text-xs text-slate-400 font-normal">Hourly, half-day & full-day personal riders</div>
                 </Link>
                 <Link href="/bikes?category=Scooter" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">City Scooters</div>
-                  <div className="text-xs text-slate-400 font-normal">Activa 6G, TVS Jupiter 125</div>
+                  <div className="font-bold">City Scooter Riders</div>
+                  <div className="text-xs text-slate-400 font-normal">Riders for Activa 6G, TVS Jupiter</div>
                 </Link>
                 <Link href="/bikes?category=Commuter" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Commuter Bikes</div>
-                  <div className="text-xs text-slate-400 font-normal">Hero Splendor Plus, Honda Shine 125</div>
+                  <div className="font-bold">Errands & Daily Riders</div>
+                  <div className="text-xs text-slate-400 font-normal">Pick & drop tasks, documents, parcels</div>
                 </Link>
                 <Link href="/bikes?category=Cruiser" className="block px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-900">
-                  <div className="font-bold">Cruisers & Highway Bikes</div>
-                  <div className="text-xs text-slate-400 font-normal">Royal Enfield Classic 350, Pulsar 150</div>
+                  <div className="font-bold">Cruiser & Highway Pilots</div>
+                  <div className="text-xs text-slate-400 font-normal">Experienced riders for Royal Enfield Classic 350</div>
                 </Link>
               </div>
             </div>
@@ -143,13 +143,13 @@ export default function Header() {
           {/* Right side CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex flex-col items-end mr-2">
-              <span className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Quick Booking</span>
+              <span className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Driver Dispatch</span>
               <a href={getPhoneLink(SITE_CONFIG.phone)} className="font-bold text-primary-900 text-sm hover:text-accent-600 transition-colors">
                 {SITE_CONFIG.phone}
               </a>
             </div>
             <Link href="/booking" className="bg-accent-500 hover:bg-accent-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-md hover:shadow-lg">
-              Book Online
+              Hire a Driver
             </Link>
           </div>
 
@@ -164,14 +164,13 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Nav Drawer */}
+      {/* Mobile Navigation Drawer in Exact Order: Home -> Price Chart -> Car -> Bike -> Contact Us */}
       <div 
         className={cn(
           "fixed inset-0 top-[105px] sm:top-[115px] bg-white z-50 transform transition-transform duration-300 lg:hidden overflow-y-auto border-t border-slate-200",
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        {/* Mobile Navigation in Exact Order: Home -> Price Chart -> Car -> Bike -> Contact Us */}
         <div className="p-5 flex flex-col space-y-3 font-semibold text-slate-800">
           <Link href="/" className="py-2.5 border-b border-slate-100 hover:text-accent-600 flex items-center justify-between" onClick={() => setIsMobileMenuOpen(false)}>
             <span>Home</span>
@@ -179,56 +178,56 @@ export default function Header() {
 
           <Link href="/pricing" className="py-2.5 border-b border-slate-100 text-primary-900 font-bold hover:text-accent-600 flex items-center justify-between" onClick={() => setIsMobileMenuOpen(false)}>
             <span>Price Chart</span>
-            <span className="text-[10px] bg-blue-100 text-primary-900 px-2 py-0.5 rounded-full font-bold">Transparent</span>
+            <span className="text-[10px] bg-blue-100 text-primary-900 px-2 py-0.5 rounded-full font-bold">Driver Tariffs</span>
           </Link>
 
-          {/* Car Category Group */}
+          {/* Car Drivers Category Group */}
           <div className="py-2.5 border-b border-slate-100">
             <div className="flex items-center justify-between text-primary-900 font-bold mb-2">
-              <span className="text-base">Car Services & Fleet</span>
+              <span className="text-base">Car Drivers</span>
               <Link href="/cars" className="text-xs text-accent-600 font-bold hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
-                View Cars
+                Drivers by Car
               </Link>
             </div>
             <div className="pl-3 space-y-2 text-sm font-medium">
               <Link href="/services/local-car-rental" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Local Car Rental (Hourly 4h, 8h, 12h)
+                Local Hourly Driver (4h, 8h, 12h for Your Car)
               </Link>
               <Link href="/services/outstation-cab" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Outstation Cabs (One-Way & Round Trip)
-              </Link>
-              <Link href="/tours" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Kanpur Sightseeing & Tours (Bithoor, Ayodhya)
+                Outstation Highway Driver (Same Day & Stay)
               </Link>
               <Link href="/services/corporate-car-rental" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Corporate Car Rental (Monthly Retainers)
+                Monthly / Permanent Private Chauffeur
+              </Link>
+              <Link href="/tours" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
+                City & Pilgrimage Tour Driver (Bithoor, Ayodhya)
               </Link>
             </div>
           </div>
 
-          {/* Bike Category Group */}
+          {/* Bike Riders Category Group */}
           <div className="py-2.5 border-b border-slate-100">
             <div className="flex items-center justify-between text-accent-600 font-bold mb-2">
               <span className="text-base flex items-center gap-1.5">
-                <span>Bike & Scooter Rental</span>
-                <span className="bg-orange-100 text-accent-600 text-xs px-1.5 py-0.5 rounded-full">New</span>
+                <span>Bike & Two-Wheeler Riders</span>
+                <span className="bg-orange-100 text-accent-600 text-xs px-1.5 py-0.5 rounded-full">On Demand</span>
               </span>
               <Link href="/bikes" className="text-xs text-primary-900 font-bold hover:underline" onClick={() => setIsMobileMenuOpen(false)}>
-                View Bikes
+                Riders Network
               </Link>
             </div>
             <div className="pl-3 space-y-2 text-sm font-medium">
               <Link href="/services/bike-rental" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Bike Rental Overview & Hubs
+                Two-Wheeler Rider Service Overview
               </Link>
               <Link href="/bikes?category=Scooter" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                City Scooters (Activa 6G, Jupiter)
+                City Scooter Riders (Activa, Jupiter)
               </Link>
               <Link href="/bikes?category=Commuter" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Commuter Bikes (Splendor Plus, Shine)
+                Errand & Document Pickup Riders
               </Link>
               <Link href="/bikes?category=Cruiser" className="block py-1 text-slate-600 hover:text-accent-600" onClick={() => setIsMobileMenuOpen(false)}>
-                Cruisers (Royal Enfield Classic 350)
+                Cruiser Riders (Royal Enfield Classic 350)
               </Link>
             </div>
           </div>
@@ -243,7 +242,7 @@ export default function Header() {
               className="block w-full text-center bg-accent-500 hover:bg-accent-600 text-white font-bold py-3 rounded-xl shadow-md transition-all"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Book Car / Bike Online
+              Hire a Driver Now
             </Link>
           </div>
         </div>

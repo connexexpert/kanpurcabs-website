@@ -12,9 +12,9 @@ import FAQSection from "@/components/home/FAQSection";
 import CTABanner from "@/components/home/CTABanner";
 
 export const metadata = {
-  title: "KanpurCabs - Reliable Car & Bike Rentals in Kanpur",
+  title: "KanpurDrivers - Hire Verified Drivers for Your Car & Bike in Kanpur",
   description:
-    "Book affordable car and bike rentals, outstation cabs, and local sightseeing tours in Kanpur with transparent pricing, verified drivers, and 24/7 service.",
+    "Hire background-verified, professional drivers and riders for your personal car or two-wheeler in Kanpur. Local hourly, outstation highway, and monthly chauffeurs. Punctual, 24/7 service.",
 };
 
 export default function HomePage() {

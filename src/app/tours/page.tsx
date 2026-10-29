@@ -1,143 +1,106 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Clock, MapPin, IndianRupee, ArrowRight } from 'lucide-react';
+import { Clock, MapPin, IndianRupee, ArrowRight, ShieldCheck } from 'lucide-react';
 import PageHero from '@/components/ui/PageHero';
 import SectionHeading from '@/components/ui/SectionHeading';
 
 export const metadata: Metadata = {
-  title: 'Tour Packages in Kanpur | Sightseeing & Pilgrimage Tours',
-  description: 'Explore Kanpur with our curated sightseeing tours. City tours, Bithoor pilgrimage, and weekend getaways to Ayodhya and Lucknow.',
+  title: 'Sightseeing & Pilgrimage Chauffeurs in Kanpur | In Your Personal Car | KanpurDrivers',
+  description: 'Hire experienced local and pilgrimage chauffeurs for your personal car in Kanpur. Half-day, full-day city tours, Bithoor and Ayodhya pilgrimages.',
 };
 
 const tours = [
   {
     id: 'kanpur-half-day',
-    name: 'Kanpur Half-Day City Tour',
-    duration: '4 Hours',
-    price: '1,500',
-    highlights: 'JK Temple, Allen Zoo, Moti Jheel',
+    name: 'Kanpur Half-Day City Tour Chauffeur',
+    duration: '4 Hours Duty',
+    price: '400',
+    highlights: 'JK Temple, Allen Forest Zoo, Moti Jheel',
     imageUrl: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'kanpur-full-day',
-    name: 'Kanpur Full-Day City Tour',
-    duration: '8 Hours',
-    price: '2,500',
-    highlights: 'Zoo, Temples, Ganga Barrage, Blue World',
+    name: 'Kanpur Full-Day City Tour Chauffeur',
+    duration: '8 Hours Duty',
+    price: '700',
+    highlights: 'Zoo, Temples, Ganga Barrage, Nana Rao Park',
     imageUrl: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'bithoor-pilgrimage',
-    name: 'Bithoor Pilgrimage Tour',
-    duration: '5 Hours',
-    price: '1,800',
+    name: 'Bithoor Holy Pilgrimage Chauffeur',
+    duration: '5 Hours Duty',
+    price: '500',
     highlights: 'Brahmavart Ghat, Valmiki Ashram, Ganga Aarti',
     imageUrl: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'kanpur-religious',
-    name: 'Kanpur Religious Tour',
-    duration: '6 Hours',
-    price: '2,000',
+    name: 'Kanpur Sacred Temples Chauffeur',
+    duration: '6 Hours Duty',
+    price: '550',
     highlights: 'ISKCON, JK Temple, Panki Hanuman Mandir',
     imageUrl: 'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80',
   },
   {
-    id: 'kanpur-lucknow',
-    name: 'Kanpur-Lucknow Heritage Weekend',
-    duration: '2 Days',
-    price: '5,500',
-    highlights: 'Bara Imambara, Rumi Darwaza, Hazratganj',
-    imageUrl: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80',
-  },
-  {
     id: 'ayodhya-prayagraj',
-    name: 'Ayodhya-Prayagraj Pilgrimage',
-    duration: '2 Days',
-    price: '6,500',
-    highlights: 'Ram Mandir, Triveni Sangam, Hanuman Garhi',
+    name: 'Ayodhya & Prayagraj Pilgrimage Chauffeur',
+    duration: '2 Days Outstation',
+    price: '2,400',
+    highlights: 'Shri Ram Mandir, Triveni Sangam Snan, Hanuman Garhi',
     imageUrl: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
 export default function ToursPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="bg-slate-50 min-h-screen pb-16">
       <PageHero 
-        title="Kanpur Tour & Sightseeing Packages" 
-        subtitle="Discover the heritage, culture, and spirituality of Uttar Pradesh"
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Tours', href: '/tours' }]}
+        title="Sightseeing & Pilgrimage Chauffeurs" 
+        subtitle="Enjoy spiritual and heritage journeys in your personal car with our knowledgeable chauffeurs"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Sightseeing Chauffeurs', href: '/tours' }]}
       />
       
-      <section className="py-16 md:py-24 container mx-auto px-4">
-        <SectionHeading title="Curated Tour Experiences" subtitle="Choose from our most popular itineraries" />
+      <section className="py-16 md:py-20 container mx-auto px-4 max-w-7xl">
+        <SectionHeading 
+          title="Curated Sightseeing & Pilgrimage Driver Duties" 
+          subtitle="Sit back with your family in your personal vehicle. Our chauffeurs take care of congested parking and optimal routes." 
+        />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {tours.map((tour) => (
-            <div key={tour.id} className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all border border-slate-200 overflow-hidden flex flex-col group">
-              <div className="h-52 relative overflow-hidden bg-slate-100">
-                <img
-                  src={tour.imageUrl}
+            <div key={tour.id} className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-all flex flex-col">
+              <div className="h-48 overflow-hidden relative group">
+                <img 
+                  src={tour.imageUrl} 
                   alt={tour.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <h3 className="text-white text-xl font-bold absolute bottom-3 left-4 right-4 drop-shadow-md">
-                  {tour.name}
-                </h3>
-              </div>
-              
-              <div className="p-6 flex-grow flex flex-col justify-between">
-                <div>
-                  <div className="flex justify-between items-center mb-4 text-slate-600 text-sm border-b border-slate-100 pb-3">
-                    <span className="flex items-center gap-1.5 font-medium text-slate-700">
-                      <Clock className="w-4 h-4 text-accent-500" /> {tour.duration}
-                    </span>
-                    <span className="flex items-center font-extrabold text-primary-900 text-lg">
-                      <IndianRupee className="w-4 h-4" /> {tour.price}
-                    </span>
-                  </div>
-                  
-                  <p className="text-slate-600 text-sm mb-6 flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-primary-800 flex-shrink-0 mt-0.5" /> 
-                    <span>{tour.highlights}</span>
-                  </p>
+                <div className="absolute top-3 left-3 bg-primary-950/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-semibold">
+                  {tour.duration}
                 </div>
-                
-                <div className="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-slate-100">
-                  <Link
-                    href={`/tours/${tour.id}`}
-                    className="text-center border border-slate-300 hover:border-primary-900 text-slate-700 font-bold py-2.5 rounded-xl transition-colors text-xs"
+              </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="font-bold text-lg text-slate-900 mb-2">{tour.name}</h3>
+                <p className="text-xs text-slate-600 mb-4 flex-grow leading-relaxed">
+                  <strong>Highlights:</strong> {tour.highlights}
+                </p>
+                <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
+                  <div>
+                    <span className="text-[10px] text-slate-400 block uppercase">Driver Duty Fee</span>
+                    <span className="font-extrabold text-base text-primary-900">₹{tour.price}</span>
+                  </div>
+                  <Link 
+                    href={`/booking?serviceType=Local+Hourly+Car+Driver&package=${encodeURIComponent(tour.name)}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-primary-900 hover:bg-primary-950 px-4 py-2 rounded-xl transition-colors"
                   >
-                    Itinerary
-                  </Link>
-                  <Link
-                    href={`/booking?serviceType=Sightseeing+Tour&destination=${encodeURIComponent(tour.name)}`}
-                    className="text-center bg-primary-900 hover:bg-primary-950 text-white font-bold py-2.5 rounded-xl transition-colors text-xs shadow-sm"
-                  >
-                    Book Tour
+                    Hire Chauffeur <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-      </section>
-      
-      <section className="bg-primary-900 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3">Want a Custom Tour Itinerary?</h2>
-          <p className="text-slate-300 max-w-2xl mx-auto mb-8 text-sm sm:text-base">
-            Tell us where you want to travel, and we will customize a bespoke itinerary with chauffeured car and transparent upfront billing.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-600 text-white font-bold py-3.5 px-8 rounded-xl transition-all shadow-md hover:shadow-lg"
-          >
-            <span>Request Custom Tour</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </section>
     </main>

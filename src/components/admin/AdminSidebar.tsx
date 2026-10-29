@@ -51,7 +51,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         <div className="flex h-16 items-center justify-between px-6 bg-slate-950">
           <Link href="/admin/dashboard" className="text-xl font-bold text-white flex items-center gap-2">
             <Car className="text-primary-500" />
-            <span>KanpurCabs Admin</span>
+            <span>KanpurDrivers Admin</span>
           </Link>
           <button className="lg:hidden text-slate-400 hover:text-white" onClick={onClose}>
             <X size={20} />

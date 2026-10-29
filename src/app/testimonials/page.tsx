@@ -1,62 +1,56 @@
 import { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews | KanpurCabs",
+  title: "Customer Reviews | KanpurDrivers",
   description:
-    "Read what our customers have to say about their car rental experience with KanpurCabs.",
+    "Read what vehicle owners have to say about hiring verified drivers and riders with KanpurDrivers.",
 };
 
 const TESTIMONIALS = [
   {
-    name: "Amit Sharma",
-    location: "Kanpur",
+    name: "Dr. Sanjeev Agarwal",
+    location: "Civil Lines, Kanpur",
+    service: "Monthly Permanent Chauffeur (Honda City)",
     rating: 5,
-    text: "Excellent service! I booked an Innova for a family trip to Lucknow. The car was very clean, and the driver was polite and arrived exactly on time. Highly recommend KanpurCabs.",
+    text: "I hired a monthly chauffeur for my personal Honda City through KanpurDrivers. The driver is punctual, police-verified, and handles city traffic with immense patience. Excellent service for busy professionals.",
   },
   {
-    name: "Priya Gupta",
-    location: "Delhi",
+    name: "Ananya Tripathi",
+    location: "Kakadeo, Kanpur",
+    service: "Outstation Highway Driver (Innova Crysta)",
     rating: 5,
-    text: "Rented an Activa 6G for 3 days to travel between Kakadeo and Swaroop Nagar. Instant paperwork with Aadhaar, complimentary ISI helmet, and great mileage. Best two-wheeler rental in Kanpur!",
+    text: "Booked an outstation driver for our family road trip from Kanpur to Ayodhya and Lucknow. The driver drove our Innova with utmost safety, navigated toll plazas smoothly, and was very respectful to my elderly parents.",
   },
   {
-    name: "Rahul Verma",
-    location: "Kanpur",
-    rating: 4,
-    text: "Good experience overall. Booked a Dzire for local usage. The AC was working perfectly which is a must in summers. Driver knew all the local routes.",
+    name: "Mohit Kapoor",
+    location: "Swaroop Nagar, Kanpur",
+    service: "Local 8-Hour Driver (Maruti Dzire)",
+    rating: 5,
+    text: "Booked an 8-hour local package for a full day of wedding shopping and guest pickups. Zero parking headache in crowded Kanpur bazaars. Highly recommend their transparent hourly tariffs.",
   },
   {
-    name: "Neha Singh",
-    location: "Mumbai",
+    name: "Rohit Nigam",
+    location: "Gumti No. 5, Kanpur",
+    service: "Two-Wheeler On-Demand Rider (Activa 6G)",
     rating: 5,
-    text: "Booked an Ertiga for a family trip to Bithoor and Blue World Theme Park. Managing transport for 6 people was seamless thanks to their professional driver and clean car.",
+    text: "Needed urgent legal documents delivered across town while I was tied up in meetings. Booked a 2-hour bike rider for my Activa. He picked up and delivered everything safely within 45 minutes.",
+  },
+  {
+    name: "Shalini Saxena",
+    location: "Mall Road, Kanpur",
+    service: "Late Night Safe Drop (Creta Automatic)",
+    rating: 5,
+    text: "The night safe drop driver arrived within 40 minutes after our family dinner party. Drove our automatic car safely back to our residence. Clean uniform, polite, and completely dependable.",
   },
   {
     name: "Vikram Yadav",
-    location: "Kanpur",
+    location: "Kidwai Nagar, Kanpur",
+    service: "Outstation Driver (Delhi Highway Road Trip)",
     rating: 5,
-    text: "I regularly use KanpurCabs for my business travels to nearby cities. They have never disappointed. Invoicing is clear with no hidden charges.",
-  },
-  {
-    name: "Ritu Agarwal",
-    location: "Lucknow",
-    rating: 4,
-    text: "Very prompt customer service. I had to change my booking time at the last minute and they accommodated it without any hassle.",
-  },
-  {
-    name: "Sanjay Mishra",
-    location: "Kanpur",
-    rating: 5,
-    text: "Booked a Royal Enfield Classic 350 for a weekend ride along the Ganga Barrage and Brahmavart Ghat. The bike was in mint condition with roaring engine health and smooth suspension.",
-  },
-  {
-    name: "Aditya Tiwari",
-    location: "Varanasi",
-    rating: 5,
-    text: "Took a round trip from Kanpur to Ayodhya. The driver was very knowledgeable and doubled up as a guide for some places. Great journey!",
+    text: "I regularly use KanpurDrivers for highway trips to Delhi in my XUV700. Drivers are highly experienced on the Yamuna Expressway and make long journeys effortless.",
   },
 ];
 
@@ -65,72 +59,74 @@ export default function TestimonialsPage() {
     <div className="min-h-screen bg-slate-50 pb-16">
       <PageHero
         title="Customer Reviews"
-        subtitle="Don't just take our word for it. Here's what our travelers have to say."
-        breadcrumbs={[{ label: "Reviews" }]}
+        subtitle="Real stories from vehicle owners who trust KanpurDrivers for safe and reliable travel."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Testimonials" }]}
       />
 
-      <div className="container mx-auto px-4 mt-12">
-        {/* Rating Summary */}
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-8 mb-12 text-center">
-          <div className="flex justify-center items-center gap-2 text-yellow-400 mb-2">
+      <div className="container mx-auto px-4 mt-12 max-w-6xl">
+        {/* Rating Overview */}
+        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center max-w-xl mx-auto mb-12">
+          <div className="text-5xl font-extrabold text-slate-900 mb-2">4.9</div>
+          <div className="flex justify-center gap-1 mb-2">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-8 h-8 fill-current" />
+              <Star
+                key={i}
+                className="w-6 h-6 fill-accent-400 text-accent-400"
+              />
             ))}
           </div>
-          <div className="text-4xl font-bold text-slate-900 mb-2">
-            4.8 / 5.0
-          </div>
-          <p className="text-slate-600 font-medium">
-            Based on 500+ reviews from verified customers
+          <p className="text-slate-500 text-xs sm:text-sm">
+            Based on 95,000+ verified customer trips in Kanpur
           </p>
         </div>
 
-        {/* Reviews Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((review, i) => (
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {TESTIMONIALS.map((t, index) => (
             <div
-              key={i}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full relative overflow-hidden group hover:border-blue-200 transition-colors"
+              key={index}
+              className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-shadow"
             >
-              <Quote className="absolute top-4 right-4 w-12 h-12 text-slate-50 opacity-50 group-hover:text-blue-50 transition-colors z-0" />
-              <div className="relative z-10 flex-grow">
-                <div className="flex text-yellow-400 mb-4">
-                  {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-current" />
-                  ))}
-                  {[...Array(5 - review.rating)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-slate-200" />
+              <div>
+                <Quote className="w-8 h-8 text-primary-200 mb-4" />
+                <div className="flex gap-1 mb-3">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-accent-400 text-accent-400"
+                    />
                   ))}
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  "{review.text}"
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                  &ldquo;{t.text}&rdquo;
                 </p>
               </div>
-              <div className="relative z-10 flex items-center mt-auto border-t border-slate-50 pt-4">
-                <div className="w-10 h-10 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center font-bold mr-3">
-                  {review.name.charAt(0)}
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm">
-                    {review.name}
-                  </h4>
-                  <p className="text-xs text-slate-500">{review.location}</p>
-                </div>
+
+              <div className="border-t border-slate-100 pt-4">
+                <p className="font-bold text-slate-900 text-sm">{t.name}</p>
+                <p className="text-xs text-slate-500">{t.location}</p>
+                <p className="text-[11px] text-primary-900 font-semibold mt-1 flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  {t.service}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Had a great trip with us?
-          </h2>
+        <div className="bg-primary-950 text-white rounded-2xl p-8 text-center max-w-2xl mx-auto border border-primary-900">
+          <h3 className="text-xl font-bold mb-2">
+            Experience Safe & Verified Driver Service
+          </h3>
+          <p className="text-slate-300 text-xs sm:text-sm mb-6">
+            Book a chauffeur for your personal car or a rider for your two-wheeler today.
+          </p>
           <Link
-            href="/contact"
-            className="inline-block px-8 py-3 bg-blue-800 text-white font-bold rounded-xl hover:bg-blue-900 transition-colors"
+            href="/booking"
+            className="inline-flex px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl text-xs transition-colors shadow"
           >
-            Share Your Experience
+            Hire a Driver Online
           </Link>
         </div>
       </div>

@@ -20,7 +20,7 @@ export async function sendBookingNotification(booking: any) {
     const mailOptions = {
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
-      subject: `New Booking Request - ${booking.bookingId} - KanpurCabs`,
+      subject: `New Driver Request - ${booking.bookingId} - KanpurDrivers`,
       html: `
         <h2>New Booking Request Received</h2>
         <p><strong>Booking ID:</strong> ${booking.bookingId}</p>
@@ -58,7 +58,7 @@ export async function sendContactNotification(contact: any) {
     const mailOptions = {
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
-      subject: `New Contact Form Message from ${contact.name} - KanpurCabs`,
+      subject: `New Contact Form Message from ${contact.name} - KanpurDrivers`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${contact.name}</p>

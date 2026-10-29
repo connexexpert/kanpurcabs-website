@@ -25,7 +25,7 @@ export default function WhatsAppWidget() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const whatsappUrl = getWhatsAppLink(SITE_CONFIG.whatsapp, "Hi! I want to book a car in Kanpur.");
+  const whatsappUrl = getWhatsAppLink(SITE_CONFIG.whatsapp, "Hi KanpurDrivers! I want to hire a verified driver for my vehicle in Kanpur.");
 
   return (
     <div 

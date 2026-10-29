@@ -5,7 +5,7 @@ export async function POST(request: Request) {
     const { email, password } = await request.json();
 
     // Hardcoded credentials for now
-    if (email === 'admin@kanpurcabs.com' && password === 'admin123') {
+    if ((email === 'admin@kanpurdrivers.com' || email === 'admin@kanpurcabs.com') && password === 'admin123') {
       const user = { email, role: 'admin' };
       // Simple pseudo-token
       const token = Buffer.from(JSON.stringify({ ...user, exp: Date.now() + 86400000 })).toString('base64');

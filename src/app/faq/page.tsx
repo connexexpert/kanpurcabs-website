@@ -2,102 +2,87 @@
 
 import { useState } from "react";
 import PageHero from "@/components/ui/PageHero";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown, HelpCircle, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 const FAQS = [
   {
-    category: "Booking",
-    q: "How can I book a cab?",
-    a: "You can book a cab through our website by filling out the contact form, by calling us directly on our helpline numbers, or via WhatsApp. We recommend booking in advance to ensure availability.",
+    category: "Driver Hire Basics",
+    q: "Who provides the vehicle and fuel?",
+    a: "All driving and riding services are carried out on the vehicle provided by the customer (your personal car, SUV, or two-wheeler). The customer is responsible for vehicle fuel, insurance, and maintenance, while KanpurDrivers provides the background-verified, skilled chauffeur or rider.",
   },
   {
-    category: "Booking",
-    q: "Is advance payment required?",
-    a: "Yes, we require a nominal advance payment (usually 20%) to confirm your booking. The remaining amount can be paid directly to the driver at the end of your trip.",
+    category: "Driver Hire Basics",
+    q: "How quickly can a driver arrive at my Kanpur address?",
+    a: "Our uniformed drivers typically arrive within 45 to 60 minutes across all major Kanpur locations, including Civil Lines, Swaroop Nagar, Kakadeo, Kidwai Nagar, Kalyanpur, and Mall Road. You can also book in advance.",
   },
   {
-    category: "Booking",
-    q: "Can I modify my booking later?",
-    a: "Yes, you can modify your booking details up to 12 hours before the scheduled pickup time, subject to vehicle availability.",
+    category: "Driver Hire Basics",
+    q: "Can I book a driver for just a few hours?",
+    a: "Yes! We offer a minimum 4-hour local city package (starting at ₹400 for hatchbacks/sedans), an 8-hour full-day package (₹700), and a 12-hour extended duty package (₹950). Overtime is billed at ₹80 to ₹100 per hour.",
   },
   {
-    category: "Pricing",
-    q: "Are there any hidden charges?",
-    a: "No, we believe in complete transparency. Our pricing includes base fare and driver allowance (unless specified otherwise). Tolls, parking, and state taxes are charged extra on actuals.",
+    category: "Safety & Verification",
+    q: "Are the drivers background-checked and police-verified?",
+    a: "Yes, 100%. Every driver and rider in our network undergoes criminal record verification with local police, residential address verification via Aadhaar, and a thorough assessment of driving history and commercial licensing.",
   },
   {
-    category: "Pricing",
-    q: "How is the per km charge calculated?",
-    a: "The per km charge is calculated from our garage to garage. A minimum of 250 km per day is billed for outstation trips.",
+    category: "Safety & Verification",
+    q: "Can your chauffeurs drive automatic, AMT, and luxury cars?",
+    a: "Yes. Our team includes senior chauffeurs certified in driving all modern transmission types: Manual, AMT, Torque Converter, CVT, and Dual-Clutch (DCT/DSG) systems across luxury brands like BMW, Mercedes, Audi, Fortuner, and premium sedans.",
   },
   {
-    category: "Pricing",
+    category: "Safety & Verification",
+    q: "What is your driver alcohol and safety policy?",
+    a: "We maintain a strict zero-tolerance policy towards alcohol and reckless driving. Every driver is screened, carries a commercial badge, and adheres to strict safety protocols.",
+  },
+  {
+    category: "Outstation Drivers",
+    q: "How does outstation driver billing work in my personal car?",
+    a: "For outstation journeys, the driver daily tariff is ₹1,000/day for same-day returns (plus ₹250 food allowance) or ₹1,200/day for multi-day trips (plus ₹400 night stay & food allowance). Fuel, toll taxes, and state border permits are paid directly by the customer.",
+  },
+  {
+    category: "Outstation Drivers",
+    q: "Are drivers experienced in expressway and night highway driving?",
+    a: "Yes. Our outstation drivers have a minimum of 8+ years of highway experience and are well-versed in navigating Agra-Lucknow Expressway, Yamuna Expressway, and Purvanchal Expressway safely at night.",
+  },
+  {
+    category: "Monthly Chauffeurs",
+    q: "What are the packages for monthly permanent drivers?",
+    a: "We offer 26-day monthly contracts (with 4 Sundays off): 8 Hours/day (₹15,000/month), 10 Hours/day (₹18,000/month), and 12 Hours/day (₹21,000/month). You can also schedule a 1-day trial before confirming.",
+  },
+  {
+    category: "Monthly Chauffeurs",
+    q: "What if my monthly driver takes leave or falls ill?",
+    a: "We provide an uninterrupted leave replacement guarantee. If your designated chauffeur is ill or takes emergency leave, our dispatch coordinator immediately deploys a qualified replacement driver at zero extra agency cost.",
+  },
+  {
+    category: "Bike Riders",
+    q: "Can I hire a rider for my scooter or motorcycle?",
+    a: "Yes! We offer on-demand two-wheeler riders starting at ₹199 for 2 hours, ₹349 for 4 hours, and ₹599 for 8 hours. Perfect for urgent document delivery, city shopping errands, or a safe ride home if you are feeling unwell.",
+  },
+  {
+    category: "Billing & Payment",
     q: "What payment methods do you accept?",
-    a: "We accept Cash, UPI (Google Pay, PhonePe, Paytm), Bank Transfers, and all major Credit/Debit Cards.",
-  },
-  {
-    category: "Outstation",
-    q: "Do you provide outstation car rentals?",
-    a: "Yes, we provide outstation car rentals across Uttar Pradesh and neighboring states. We offer both round-trip and one-way drop services.",
-  },
-  {
-    category: "Outstation",
-    q: "What is the minimum km per day for outstation?",
-    a: "For outstation trips, a minimum billing of 250 kms per day is applicable, irrespective of the actual distance traveled.",
-  },
-  {
-    category: "Outstation",
-    q: "Are driver night halt charges extra?",
-    a: "Yes, a night halt charge (typically ₹250-₹500 depending on the vehicle) is applicable if the driver is kept engaged between 10 PM and 6 AM.",
-  },
-  {
-    category: "Local",
-    q: "Do you offer local sightseeing packages?",
-    a: "Yes, we offer 8 hours/80 km and 12 hours/120 km packages for local sightseeing and city usage in Kanpur.",
-  },
-  {
-    category: "Bikes",
-    q: "How does the bike and scooter rental service work?",
-    a: "You can rent scooties and bikes on hourly (4h, 8h, 12h), 24-hour, or weekly packages. Pickup hubs are located at Civil Lines, Kakadeo, Swaroop Nagar, and IIT Gate with original DL and Aadhaar card verification.",
-  },
-  {
-    category: "Bikes",
-    q: "Is a helmet provided with bike rentals?",
-    a: "Yes, one complimentary ISI-certified helmet is provided with every bike rental. A secondary helmet can be added upon request. All two-wheelers include clean documentation and comprehensive insurance.",
-  },
-  {
-    category: "Safety",
-    q: "Are your vehicles sanitized?",
-    a: "Absolutely. All our vehicles undergo thorough cleaning and sanitization before and after every trip.",
-  },
-  {
-    category: "Safety",
-    q: "Are your drivers verified?",
-    a: "Yes, all our drivers are professionally trained, hold valid commercial licenses, and undergo strict background checks before hiring.",
-  },
-  {
-    category: "Safety",
-    q: "What happens in case of a breakdown?",
-    a: "We maintain our fleet in top condition to minimize such incidents. However, in the rare event of a breakdown, we will provide a replacement vehicle as quickly as possible.",
+    a: "We accept UPI (Google Pay, PhonePe, Paytm), cash directly to the driver upon duty completion, and online bank transfer. For corporate clients, we provide 100% GST-compliant B2B invoices.",
   },
 ];
 
 const CATEGORIES = [
   "All",
-  "Booking",
-  "Pricing",
-  "Safety",
-  "Outstation",
-  "Local",
-  "Bikes",
+  "Driver Hire Basics",
+  "Safety & Verification",
+  "Outstation Drivers",
+  "Monthly Chauffeurs",
+  "Bike Riders",
+  "Billing & Payment",
 ];
 
 export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const filteredFaqs = FAQS.filter((faq) => {
     const matchesCategory =
@@ -112,107 +97,96 @@ export default function FAQPage() {
     <div className="min-h-screen bg-slate-50 pb-16">
       <PageHero
         title="Frequently Asked Questions"
-        subtitle="Find answers to common questions about our services, bookings, and policies."
-        breadcrumbs={[{ label: "FAQ" }]}
+        subtitle="Answers to common questions about hiring verified drivers and riders in Kanpur"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "FAQs" }]}
       />
 
-      <div className="container mx-auto px-4 mt-8">
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Search and Filter */}
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-6">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search for answers..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-800 bg-slate-50"
-              />
+      <div className="container mx-auto px-4 mt-12 max-w-4xl">
+        {/* Search Bar */}
+        <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 flex items-center gap-3">
+          <Search className="w-5 h-5 text-slate-400 flex-shrink-0" />
+          <input
+            type="text"
+            placeholder="Search FAQs (e.g. outstation, monthly, automatic, bike rider)..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-transparent border-none focus:outline-none text-xs sm:text-sm text-slate-800"
+          />
+        </div>
+
+        {/* Categories */}
+        <div className="flex flex-wrap gap-2 mb-8">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={cn(
+                "px-4 py-2 rounded-xl text-xs font-bold transition-all",
+                activeCategory === cat
+                  ? "bg-primary-900 text-white shadow-sm"
+                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+              )}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* FAQs Accordion */}
+        <div className="space-y-4 mb-12">
+          {filteredFaqs.length === 0 ? (
+            <div className="text-center py-12 bg-white rounded-2xl border border-slate-200">
+              <p className="text-slate-500 text-sm">No matching questions found.</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => (
+          ) : (
+            filteredFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+              >
                 <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setOpenIndex(null);
-                  }}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium transition-colors",
-                    activeCategory === cat
-                      ? "bg-blue-800 text-white"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200",
-                  )}
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full p-5 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
                 >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* FAQ Accordion */}
-          <div className="space-y-4">
-            {filteredFaqs.length > 0 ? (
-              filteredFaqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"
-                >
-                  <button
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
-                    className="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
-                  >
-                    <span className="font-bold text-slate-900 pr-8">
-                      {faq.q}
-                    </span>
-                    <ChevronDown
-                      className={cn(
-                        "w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0",
-                        openIndex === index ? "rotate-180" : "",
-                      )}
-                    />
-                  </button>
-                  <div
+                  <span className="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
+                    <HelpCircle className="w-4 h-4 text-primary-800 flex-shrink-0" />
+                    {faq.q}
+                  </span>
+                  <ChevronDown
                     className={cn(
-                      "px-6 overflow-hidden transition-all duration-200 ease-in-out",
-                      openIndex === index
-                        ? "max-h-96 pb-4 opacity-100"
-                        : "max-h-0 opacity-0",
+                      "w-4 h-4 text-slate-400 transition-transform flex-shrink-0",
+                      openIndex === index ? "rotate-180 text-primary-800" : ""
                     )}
-                  >
-                    <p className="text-slate-600">{faq.a}</p>
-                    {activeCategory === "All" && (
-                      <span className="inline-block mt-3 px-2 py-1 bg-slate-100 text-slate-500 text-xs rounded-md">
-                        {faq.category}
-                      </span>
-                    )}
+                  />
+                </button>
+                {openIndex === index && (
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 border-t border-slate-100 leading-relaxed">
+                    {faq.a}
                   </div>
-                </div>
-              ))
-            ) : (
-              <div className="text-center py-12 bg-white rounded-2xl border border-slate-100">
-                <p className="text-slate-500">
-                  No questions found matching your criteria.
-                </p>
+                )}
               </div>
-            )}
-          </div>
+            ))
+          )}
+        </div>
 
-          {/* CTA */}
-          <div className="bg-blue-900 rounded-2xl p-8 text-center text-white">
-            <h3 className="text-2xl font-bold mb-3">Still have questions?</h3>
-            <p className="text-blue-200 mb-6">
-              Can't find the answer you're looking for? Please chat to our
-              friendly team.
-            </p>
+        {/* Contact Assistance Strip */}
+        <div className="bg-primary-950 text-white rounded-2xl p-8 text-center border border-primary-900">
+          <h3 className="text-xl font-bold mb-2">Still Have Questions?</h3>
+          <p className="text-slate-300 text-xs sm:text-sm mb-6 max-w-md mx-auto">
+            Our Kanpur dispatch coordinator is available 24/7 to answer your driver requirements.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/contact"
-              className="inline-block px-8 py-3 bg-white text-blue-900 font-bold rounded-xl hover:bg-slate-50 transition-colors"
+              className="px-6 py-2.5 bg-accent-500 hover:bg-accent-600 text-white font-bold text-xs rounded-xl transition-colors shadow"
             >
-              Contact Support
+              Contact Dispatch Desk
+            </Link>
+            <Link
+              href="/booking"
+              className="px-6 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs rounded-xl transition-colors"
+            >
+              Hire a Driver Now
             </Link>
           </div>
         </div>

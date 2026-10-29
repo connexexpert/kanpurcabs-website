@@ -47,7 +47,7 @@ export default function AdminLogin() {
           Admin Portal
         </h2>
         <p className="mt-2 text-center text-sm text-slate-600">
-          Sign in to manage KanpurCabs
+          Sign in to manage KanpurDrivers
         </p>
       </div>
 
@@ -97,7 +97,7 @@ export default function AdminLogin() {
             </div>
           </form>
           <div className="mt-6 border-t border-slate-200 pt-4 text-xs text-center text-slate-500">
-            Hint: admin@kanpurcabs.com / admin123
+            Hint: admin@kanpurdrivers.com / admin123
           </div>
         </div>
       </div>

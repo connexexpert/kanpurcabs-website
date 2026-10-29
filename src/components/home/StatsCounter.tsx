@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react'
-import { MapPin, Users, Car, Award } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { MapPin, Users, ShieldCheck, Award } from 'lucide-react'
 
 export default function StatsCounter() {
   const [isVisible, setIsVisible] = useState(false)
@@ -26,25 +25,25 @@ export default function StatsCounter() {
   }, [])
 
   const stats = [
-    { icon: MapPin, value: 5000, suffix: '+', label: 'Trips Completed' },
-    { icon: Users, value: 500, suffix: '+', label: 'Happy Customers' },
-    { icon: Car, value: 50, suffix: '+', label: 'Cars Available' },
-    { icon: Award, value: 10, suffix: '+', label: 'Years Experience' }
+    { icon: MapPin, value: 95000, suffix: '+', label: 'Safe Drives Completed' },
+    { icon: Users, value: 12000, suffix: '+', label: 'Car & Bike Owners' },
+    { icon: ShieldCheck, value: 8500, suffix: '+', label: 'Verified Drivers & Riders' },
+    { icon: Award, value: 8, suffix: '+', label: 'Years Serving Kanpur' }
   ]
 
   return (
-    <section ref={ref} className="bg-gradient-to-r from-blue-800 to-blue-600 py-12">
+    <section ref={ref} className="bg-gradient-to-r from-primary-950 via-primary-900 to-slate-900 py-12 border-y border-white/10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="flex flex-col items-center text-center text-white">
-              <div className="bg-white/20 p-4 rounded-full mb-4">
-                <stat.icon className="w-8 h-8 text-white" />
+              <div className="bg-white/10 p-3.5 rounded-2xl mb-3 border border-white/10">
+                <stat.icon className="w-7 h-7 text-accent-400" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold mb-2">
-                {isVisible ? stat.value : 0}{stat.suffix}
+              <div className="text-2xl md:text-3xl font-extrabold mb-1 tracking-tight text-white">
+                {isVisible ? stat.value.toLocaleString('en-IN') : 0}{stat.suffix}
               </div>
-              <div className="text-blue-100 font-medium">
+              <div className="text-slate-300 text-xs sm:text-sm font-medium">
                 {stat.label}
               </div>
             </div>

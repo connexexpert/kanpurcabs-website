@@ -1,49 +1,56 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, CheckCircle2, ShieldCheck, Moon, Sparkles, PhoneCall } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { SITE_CONFIG } from "@/lib/utils";
+import { SITE_CONFIG, getPhoneLink, getWhatsAppLink } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Local Car Rental in Kanpur | Hourly Cab Booking | KanpurCabs",
+  title: "Local Hourly Car Driver in Kanpur | In Your Own Car | KanpurDrivers",
   description:
-    "Book local car rental in Kanpur on hourly basis. 4hr/40km, 8hr/80km packages available. Professional drivers for city travel, shopping & meetings.",
+    "Hire verified, professional car drivers on hourly basis in Kanpur (4h, 8h, 12h duty). Enjoy stress-free travel in your personal car with zero traffic and parking worries.",
 };
 
 const packages = [
   {
     id: "4hr",
-    name: "4 Hours / 40 Kms",
-    description: "Perfect for quick errands or short meetings.",
-    prices: { hatchback: "₹800", sedan: "₹950", suv: "₹1,300" },
+    name: "4 Hours Local Duty",
+    description: "Ideal for quick market errands, doctor visits & short meetings.",
+    rate: "₹400",
+    ot: "₹80/hr",
+    features: ["Manual & Automatic cars", "Doorstep pickup in Kanpur", "45-min arrival time"],
   },
   {
     id: "8hr",
-    name: "8 Hours / 80 Kms",
-    description: "Ideal for full day shopping or extensive meetings.",
-    prices: { hatchback: "₹1,500", sedan: "₹1,800", suv: "₹2,500" },
+    name: "8 Hours Full Day Duty",
+    description: "Most popular for wedding shopping, multiple client visits & full-day city travel.",
+    rate: "₹700",
+    ot: "₹80/hr",
+    features: ["Continuous 8-hour chauffeur availability", "Multiple stops allowed", "Uniformed police-verified driver"],
+    popular: true,
   },
   {
     id: "12hr",
-    name: "12 Hours / 120 Kms",
-    description: "Best for all day usage and events.",
-    prices: { hatchback: "₹2,200", sedan: "₹2,600", suv: "₹3,600" },
+    name: "12 Hours Extended Duty",
+    description: "Best for wedding functions, family events, and long-day executive transit.",
+    rate: "₹950",
+    ot: "₹100/hr",
+    features: ["Full 12-hour duty coverage", "Trained in luxury & automatic vehicles", "Zero surge pricing guarantee"],
   },
 ];
 
 const steps = [
   {
-    title: "Choose Package",
-    desc: "Select from 4hr, 8hr, or 12hr packages based on your need.",
+    title: "1. Select Duration",
+    desc: "Choose between 4h (₹400), 8h (₹700), or 12h (₹950) duty packages for your personal car.",
   },
   {
-    title: "Select Vehicle",
-    desc: "Pick a Hatchback, Sedan, or SUV that fits your group.",
+    title: "2. Driver Reaches Doorstep",
+    desc: "Our police-verified chauffeur arrives at your Kanpur address in uniform with original credentials.",
   },
   {
-    title: "Travel Freely",
-    desc: "Enjoy unlimited stops within city limits for the booked duration.",
+    title: "3. Travel Freely",
+    desc: "Relax in your personal vehicle. Let our driver handle Kanpur traffic, congested lanes, and parking.",
   },
 ];
 
@@ -52,290 +59,171 @@ const areas = [
   "Kakadeo",
   "Kidwai Nagar",
   "Civil Lines",
-  "Gumti No.5",
+  "Gumti No. 5",
   "Kalyanpur",
   "Jajmau",
   "Mall Road",
   "Shyam Nagar",
   "Indira Nagar",
-];
-const destinations = [
-  "Z Square Mall",
-  "JK Temple",
-  "Allen Forest Zoo",
-  "Moti Jheel",
-  "Blue World Theme Park",
-  "Kanpur Memorial Church",
+  "Govind Nagar",
+  "Ashok Nagar",
+  "Lajpat Nagar",
+  "Panki",
 ];
 
-const faqs = [
-  {
-    q: "What happens if I exceed the package km or time?",
-    a: "Extra charges apply per km and per hour based on the vehicle type.",
-  },
-  {
-    q: "Are parking and toll charges included?",
-    a: "No, parking and local toll charges (if any) are to be paid by the customer.",
-  },
-  {
-    q: "Can I go outside Kanpur city limits on this package?",
-    a: "Local packages are strictly for within city limits. For outstation, please check our outstation services.",
-  },
-  {
-    q: "Is fuel included in the price?",
-    a: "Yes, our local rental packages are inclusive of fuel and driver charges.",
-  },
-  {
-    q: "How early should I book?",
-    a: "We recommend booking at least 2 hours in advance to ensure vehicle availability.",
-  },
-];
-
-export default function LocalCarRentalPage() {
+export default function LocalCarDriverPage() {
   return (
     <main>
       <PageHero
-        title="Local Car Rental in Kanpur"
-        subtitle="Flexible hourly cab packages for your city travel needs"
+        title="Local Hourly Car Driver Service"
+        subtitle="Hire verified, experienced chauffeurs for your personal car across Kanpur — Doorstep arrival in 45 minutes"
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Local Rental", href: "/services/local-car-rental" },
+          { label: "Local Car Driver", href: "/services/local-car-rental" },
         ]}
       />
 
-      <div className="container mx-auto px-4 py-12 lg:py-20 flex flex-col lg:flex-row gap-12">
-        <div className="lg:w-2/3">
-          <section className="mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Reliable City Travel with Professional Drivers
+      {/* Overview Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <span className="text-primary-800 font-bold uppercase tracking-wider text-xs">
+              Personal Chauffeur on Demand
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-1 mb-4">
+              Stress-Free City Driving in Your Personal Car
             </h2>
-            <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-              Navigate Kanpur with ease using our local car rental services.
-              Whether you have multiple business meetings, plan a day of
-              shopping at Z Square Mall, or want to visit family across town,
-              our hourly rental packages give you the freedom to travel at your
-              own pace without the hassle of booking multiple rides.
+            <p className="text-slate-600 text-base leading-relaxed">
+              Navigating Kanpur&apos;s congested roads, one-way diversions, and cramped parking spots can be exhausting. With KanpurDrivers, you can hire a polite, police-verified chauffeur on an hourly basis. You provide your personal car; we provide the professional steering hand.
             </p>
-          </section>
+          </div>
 
-          <section className="mb-16">
-            <SectionHeading
-              title="Local Rental Packages"
-              subtitle="Choose the right package for your needs"
-              align="left"
-            />
-            <div className="overflow-x-auto mt-8">
-              <table className="w-full text-left border-collapse border border-slate-200 rounded-lg overflow-hidden">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="p-4 border border-slate-200 font-semibold text-slate-700">
-                      Package
-                    </th>
-                    <th className="p-4 border border-slate-200 font-semibold text-slate-700">
-                      Hatchback (Mini)
-                    </th>
-                    <th className="p-4 border border-slate-200 font-semibold text-slate-700">
-                      Sedan (Dzire/Etios)
-                    </th>
-                    <th className="p-4 border border-slate-200 font-semibold text-slate-700">
-                      SUV (Innova/Ertiga)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {packages.map((pkg) => (
-                    <tr key={pkg.id} className="hover:bg-slate-50">
-                      <td className="p-4 border border-slate-200 font-medium text-slate-900">
-                        {pkg.name}
-                        <span className="block text-sm font-normal text-slate-500 mt-1">
-                          {pkg.description}
-                        </span>
-                      </td>
-                      <td className="p-4 border border-slate-200">
-                        {pkg.prices.hatchback}
-                      </td>
-                      <td className="p-4 border border-slate-200">
-                        {pkg.prices.sedan}
-                      </td>
-                      <td className="p-4 border border-slate-200">
-                        {pkg.prices.suv}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 mb-8">
-              How It Works
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {steps.map((step, idx) => (
-                <div key={idx} className="bg-blue-50 p-6 rounded-xl relative">
-                  <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold absolute -top-4 -left-4 border-4 border-white shadow-sm">
-                    {idx + 1}
+          {/* Pricing Cards */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className={`rounded-2xl p-6 flex flex-col border transition-all ${
+                  pkg.popular
+                    ? "bg-primary-950 text-white border-primary-900 shadow-xl relative"
+                    : "bg-white text-slate-900 border-slate-200 shadow-sm hover:shadow-md"
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-3 right-6 bg-accent-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
+                    Most Popular
                   </div>
-                  <h3 className="font-bold text-slate-900 mb-2 mt-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm">{step.desc}</p>
+                )}
+
+                <h3 className="text-xl font-bold mb-1">{pkg.name}</h3>
+                <p className={`text-xs mb-6 ${pkg.popular ? "text-slate-300" : "text-slate-500"}`}>
+                  {pkg.description}
+                </p>
+
+                <div className="mb-6 pb-6 border-b border-slate-100/20">
+                  <span className="text-xs uppercase tracking-wider block opacity-75">Driver Duty Fee</span>
+                  <div className="text-3xl font-extrabold mt-1">{pkg.rate}</div>
+                  <span className={`text-xs mt-1 block ${pkg.popular ? "text-accent-300" : "text-slate-500"}`}>
+                    Overtime: {pkg.ot}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </section>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <MapPin className="text-blue-600 w-5 h-5" /> Areas We Serve
-              </h3>
-              <ul className="space-y-2">
-                {areas.map((area, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center gap-2 text-slate-600"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-green-500" /> {area}
-                  </li>
-                ))}
-              </ul>
-            </section>
-            <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Clock className="text-blue-600 w-5 h-5" /> Popular Destinations
-              </h3>
-              <ul className="space-y-2">
-                {destinations.map((dest, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center gap-2 text-slate-600"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-green-500" /> {dest}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {pkg.features.map((feat, i) => (
+                    <li key={i} className="text-xs flex items-center gap-2">
+                      <CheckCircle2
+                        className={`w-4 h-4 flex-shrink-0 ${
+                          pkg.popular ? "text-accent-400" : "text-emerald-600"
+                        }`}
+                      />
+                      <span className={pkg.popular ? "text-slate-200" : "text-slate-600"}>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
 
-          <section>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="border border-slate-200 rounded-lg p-5"
+                <Link
+                  href={`/booking?serviceType=Local+Hourly+Car+Driver&package=${pkg.id}`}
+                  className={`w-full py-3 rounded-xl font-bold text-xs text-center transition-colors ${
+                    pkg.popular
+                      ? "bg-accent-500 hover:bg-accent-600 text-white shadow-md"
+                      : "bg-primary-900 hover:bg-primary-950 text-white"
+                  }`}
                 >
-                  <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>
-                  <p className="text-slate-600">{faq.a}</p>
-                </div>
-              ))}
+                  Hire Driver for {pkg.rate}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          {/* Night Duty & Terms Strip */}
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-700">
+            <div className="flex items-center gap-2">
+              <Moon className="w-5 h-5 text-primary-800 flex-shrink-0" />
+              <span>
+                <strong>Night Duty Charge:</strong> ₹200 flat allowance for duty between 10:00 PM and 06:00 AM.
+              </span>
             </div>
-          </section>
-        </div>
-
-        {/* Sidebar */}
-        <aside className="lg:w-1/3">
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sticky top-24">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">
-              Book Local Cab
-            </h3>
-            <p className="text-slate-500 text-sm mb-6">
-              Fill the form below and we will contact you immediately.
-            </p>
-
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  placeholder="Your Name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  placeholder="10-digit mobile"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Date
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Time
-                  </label>
-                  <input
-                    type="time"
-                    className="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Package
-                </label>
-                <select className="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none bg-white">
-                  <option>4 Hours / 40 Kms</option>
-                  <option>8 Hours / 80 Kms</option>
-                  <option>12 Hours / 120 Kms</option>
-                </select>
-              </div>
-              <button
-                type="button"
-                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-md transition-colors mt-4"
-              >
-                Request Callback
-              </button>
-            </form>
-
-            <div className="mt-6 pt-6 border-t border-slate-200 text-center">
-              <p className="text-slate-500 text-sm mb-2">
-                Or call us directly at
-              </p>
-              <a
-                href="tel:+919876543210"
-                className="text-xl font-bold text-blue-700"
-              >
-                {SITE_CONFIG?.phone || "+91 98765 43210"}
-              </a>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <span>
+                <strong>Zero Fuel Fees:</strong> Customer provides the vehicle and fuel.
+              </span>
             </div>
           </div>
-        </aside>
-      </div>
+        </div>
+      </section>
 
-      {/* CTA Banner */}
-      <section className="bg-blue-900 text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Need a Custom Local Plan?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-            Contact us for monthly retainers, regular pickup/drops, or custom
-            hourly requirements.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
-          >
-            Contact Us Today
-          </Link>
+      {/* How it works */}
+      <section className="py-16 bg-slate-50 border-t border-slate-200">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <SectionHeading
+            title="How to Book a Local Driver in Kanpur"
+            subtitle="Follow these 3 easy steps to have a verified chauffeur at your doorstep"
+          />
+
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
+            {steps.map((step, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                <div className="w-12 h-12 bg-primary-100 text-primary-800 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
+                  {idx + 1}
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2 text-base">{step.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Areas Covered */}
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <SectionHeading
+            title="Doorstep Driver Dispatch Across Kanpur"
+            subtitle="Our vetted drivers are stationed across all major sectors of Kanpur for 45-minute arrival"
+          />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-8">
+            {areas.map((area, idx) => (
+              <div
+                key={idx}
+                className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-center text-xs font-semibold text-slate-700 flex items-center justify-center gap-1.5"
+              >
+                <MapPin className="w-3.5 h-3.5 text-primary-800" />
+                {area}
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/booking?serviceType=Local+Hourly+Car+Driver"
+              className="inline-flex items-center gap-2 bg-primary-900 hover:bg-primary-950 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow transition-colors"
+            >
+              Hire Local Hourly Driver Now
+            </Link>
+          </div>
         </div>
       </section>
     </main>
